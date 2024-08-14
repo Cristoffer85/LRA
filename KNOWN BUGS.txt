@@ -1,0 +1,2 @@
+BUG:    Text not being responsive inside Labels on startscreen
+FIX:    Because Markup is enabled right now to enable possibility to individually change font size between texts inside same box. Look later for another solution.

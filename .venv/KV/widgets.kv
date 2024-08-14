@@ -1,0 +1,45 @@
+#:kivy 2.3.0
+
+# Global style class for LABEL-boxes and BUTTON-boxes
+
+# Label, rounded corners and border, responsive text size inside
+<MyLabel@Label>:
+    font_size: min(self.parent.width * 0.2, self.parent.height * 0.3)  # Responsive font size
+    color: 0, 0, 0, 1  # Black text color
+    size_hint: None, None
+    size: self.texture_size  # Size based on text content
+    pos_hint: {'center_x': 0.5}
+    padding: [20, 0]  # Margin from the edges
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # White background
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]  # Rounded corners
+        Color:
+            rgba: 0, 0, 0, 1  # Black border color
+        Line:
+            width: 1
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 5)
+
+# Button, rounded corners and border, responsive text size inside
+<MyButton@Button>:
+    size_hint: (0.5, None)
+    height: '50dp'  # Adjusted height
+    background_normal: ''
+    background_color: 1, 0, 0, 1  # Red background
+    color: 0, 0, 0, 1  # Black text
+    font_size: min(self.parent.width * 0.2, self.parent.height * 0.2)  # Adjusted responsive font size
+    canvas.before:
+        Color:
+            rgba: 1, 0, 0, 1  # Red background
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]  # Rounded corners
+        Color:
+            rgba: 0, 0, 0, 1  # Black border
+        Line:
+            width: 1
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 5)

@@ -1,0 +1,58 @@
+#:kivy 2.3.0
+
+<StartScreen>:
+    # Main vertical BoxLayout
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 20
+
+# Welcome box at the top
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.2
+            padding: 10
+            MyLabel:
+                markup: True
+                halign: 'center'
+                text: '[size=60sp]Welcome to Latera![/size]\n[size=30sp]Please make a selection below:[/size]'
+
+# GridLayout for Solo mode and Versus mode
+        GridLayout:
+            cols: 2
+            spacing: 20
+            size_hint_y: 0.4
+            padding: 10
+
+        # Solo mode label
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5
+                MyLabel:
+                    markup: True
+                    halign: 'center'
+                    text: '[size=30sp]Solo mode[/size]'
+
+        # Versus mode label
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5
+                MyLabel:
+                    markup: True
+                    halign: 'center'
+                    text: '[size=30sp]Versus mode[/size]'
+
+# Start FUN Race button below Solo mode and Versus mode
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.2
+            padding: 20
+            spacing: 10
+            MyButton:
+                text: 'Start FUN Race'
+                size_hint: (0.25, None)  # Width is 60% of parent, height is auto
+                height: '70dp'  # Set height explicitly
+                pos_hint: {'center_x': 0.75}
+                on_press:
+                    app.sm.transition.direction = 'left'
+                    app.sm.current = 'FUNRace'

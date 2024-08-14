@@ -1,0 +1,48 @@
+#:kivy 2.3.0
+
+<OptionsScreen>:
+
+# Race Setup box #
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.2
+            size_hint_y: 0.2
+            pos_hint: {'center_y': 0.1}
+            padding: 10
+            MyLabel:
+                text: 'Race Setup:'
+                bold: True
+
+# Options buttons #
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.1
+            pos_hint: {'center_x': 0.75}
+            padding: 20
+            spacing: 5
+            MyButton:
+                text: 'Heatlength (min)'
+                on_press: app.option_selected(self)
+            MyButton:
+                text: 'Registrationtime (min)'
+                on_press: app.option_selected(self)
+            MyButton:
+                text: 'Warmup (min)'
+                on_press: app.option_selected(self)
+
+# Back button #
+        BoxLayout:
+            size_hint_y: 0.1
+            MyButton:
+                text: 'Back'
+                size_hint: None, None
+                size: '100dp', '40dp'
+                pos_hint: {'x': 0, 'y': 0}
+                background_color: 0.8, 0.1, 0.1, 1
+                color: 1, 1, 1, 1
+                on_press:
+                    app.sm.transition.direction = 'right'
+                    app.sm.current = 'start'
