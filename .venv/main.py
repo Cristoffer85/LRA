@@ -25,5 +25,8 @@ class MyApp(App):
         if self.sm.current != 'start':
             self.sm.current = 'start'
 
+    def class_selection(self, selected_option):
+        print(f'Selected Class: {selected_option}')
+
 if __name__ == '__main__':
     MyApp().run()

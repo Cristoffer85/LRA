@@ -7,7 +7,7 @@
         spacing: 20
         padding: 20
 
-# Welcome box at the top
+        # Welcome box at the top
         BoxLayout:
             orientation: 'vertical'
             size_hint_y: 0.2
@@ -17,42 +17,82 @@
                 halign: 'center'
                 text: '[size=60sp]Welcome to Latera![/size]\n[size=30sp]Please make a selection below:[/size]'
 
-# GridLayout for Solo mode and Versus mode
+        # GridLayout for Solo mode and Versus mode with buttons
         GridLayout:
             cols: 2
             spacing: 20
-            size_hint_y: 0.4
+            size_hint_y: 0.5
             padding: 10
 
-        # Solo mode label
+            # Column for Solo mode and buttons
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_x: 0.5
-                MyLabel:
-                    markup: True
-                    halign: 'center'
-                    text: '[size=30sp]Solo mode[/size]'
+                spacing: 10
+                padding: [0, 10, 0, 10]  # Padding for spacing
 
-        # Versus mode label
+                # Solo mode label
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    MyLabel:
+                        markup: True
+                        halign: 'center'
+                        text: '[size=30sp]Solo mode[/size]'
+
+                # New Button 1
+                MyButton:
+                    text: 'Free Practice'
+                    size_hint: (None, None)
+                    width: '200dp'  # Fixed width for consistency
+                    height: '50dp'
+                    on_press: app.option_selected(self)
+                    # Center the button
+                    pos_hint: {'center_x': 0.5}
+                    # Add padding to ensure text isn't too close to edges
+                    padding: [10, 5]  # [horizontal padding, vertical padding]
+
+                # New Button 2
+                MyButton:
+                    text: 'Time trial'
+                    size_hint: (None, None)
+                    width: '200dp'  # Fixed width for consistency
+                    height: '50dp'
+                    on_press: app.option_selected(self)
+                    # Center the button
+                    pos_hint: {'center_x': 0.5}
+                    # Add padding to ensure text isn't too close to edges
+                    padding: [10, 5]  # [horizontal padding, vertical padding]
+
+            # Column for Versus mode and Start FUN Race button
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_x: 0.5
-                MyLabel:
-                    markup: True
-                    halign: 'center'
-                    text: '[size=30sp]Versus mode[/size]'
+                spacing: 10
+                padding: [0, 10, 0, 10]  # Padding for spacing
 
-# Start FUN Race button below Solo mode and Versus mode
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint_y: 0.2
-            padding: 20
-            spacing: 10
-            MyButton:
-                text: 'Start FUN Race'
-                size_hint: (0.25, None)  # Width is 60% of parent, height is auto
-                height: '70dp'  # Set height explicitly
-                pos_hint: {'center_x': 0.75}
-                on_press:
-                    app.sm.transition.direction = 'left'
-                    app.sm.current = 'FUNRace'
+                # Versus mode label
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    MyLabel:
+                        markup: True
+                        halign: 'center'
+                        text: '[size=30sp]Versus mode[/size]'
+
+                # Start FUN Race button
+                MyButton:
+                    text: 'Start \nFUN Race'
+                    halign: 'center'
+                    size_hint: (None, None)
+                    width: '300dp'  # Fixed width for consistency
+                    height: '110dp'
+                    on_press:
+                        app.sm.transition.direction = 'left'
+                        app.sm.current = 'FUNRace'
+                    # Center the button
+                    pos_hint: {'center_x': 0.5}
+                    # Add padding to ensure text isn't too close to edges
+                    padding: [20, 10]  # [horizontal padding, vertical padding]
+                    # Adjust font size to fit button size better
+                    font_size: min(self.height * 0.3, self.width * 0.2)

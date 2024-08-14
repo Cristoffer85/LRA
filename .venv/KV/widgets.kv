@@ -25,15 +25,30 @@
 
 # Button, rounded corners and border, responsive text size inside
 <MyButton@Button>:
-    size_hint: (0.5, None)
-    height: '50dp'  # Adjusted height
+    size_hint: (None, None)  # Size hint is not used; fixed size is applied
+    width: self.parent.width * 0.4  # Width as a percentage of parent width
+    height: '50dp'  # Fixed height
     background_normal: ''
     background_color: 1, 0, 0, 1  # Red background
     color: 0, 0, 0, 1  # Black text
-    font_size: min(self.parent.width * 0.2, self.parent.height * 0.2)  # Adjusted responsive font size
+    font_size: min(self.height * 0.5, 30)  # Responsive font size based on height
+    padding: [10, 10]  # Padding inside the button
     canvas.before:
         Color:
             rgba: 1, 0, 0, 1  # Red background
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]  # Rounded corners
+        Line:
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 5)
+
+# Style for Dropdown Buttons
+<DropdownButton@MyButton>:
+    background_color: 0.6, 1, 0.6, 1  # Light green background
+    canvas.before:
+        Color:
+            rgba: 0.6, 1, 0.6, 1  # Light green background
         RoundedRectangle:
             pos: self.pos
             size: self.size

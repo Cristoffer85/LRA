@@ -1,46 +1,89 @@
 #:kivy 2.3.0
 
 <OptionsScreen>:
+    FloatLayout:
 
-# Race Setup box #
-    BoxLayout:
-        orientation: 'vertical'
-
+        # Race Setup box in the top left corner
         BoxLayout:
             orientation: 'vertical'
-            size_hint_x: 0.2
-            size_hint_y: 0.2
-            pos_hint: {'center_y': 0.1}
+            size_hint: None, None
+            size: '200dp', '100dp'
+            pos_hint: {'x': 0, 'top': 1}
             padding: 10
             MyLabel:
                 text: 'Race Setup:'
                 bold: True
+                halign: 'left'
 
-# Options buttons #
+        # Main layout for buttons
         BoxLayout:
-            orientation: 'vertical'
-            size_hint_y: 0.1
-            pos_hint: {'center_x': 0.75}
-            padding: 20
-            spacing: 5
-            MyButton:
-                text: 'Heatlength (min)'
-                on_press: app.option_selected(self)
-            MyButton:
-                text: 'Registrationtime (min)'
-                on_press: app.option_selected(self)
-            MyButton:
-                text: 'Warmup (min)'
-                on_press: app.option_selected(self)
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: '700dp', '400dp'  # Adjust size to fit both columns and padding
+            pos_hint: {'x': 0.25, 'top': 1}  # Adjust position to align with Race Setup
 
-# Back button #
+            # Column for Heatlength, Registrationtime, and Warmup buttons
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5  # Adjust to balance with the other column
+                spacing: 10
+                padding: [0, 10, 10, 10]  # Added right padding to provide space between columns
+
+                # Dropdown button for Heatlength
+                DropdownButton:
+                    id: heatlength_button
+                    text: 'Heatlength (min)'
+                    size_hint_x: None
+                    size_hint_y: None
+                    width: self.parent.width * 0.8  # Responsive width
+                    height: '50dp'
+                    on_release: root.open_heatlength_dropdown(self)
+
+                # Dropdown button for Registrationtime
+                DropdownButton:
+                    id: registrationtime_button
+                    text: 'Time to Register (min)'
+                    size_hint_x: None
+                    size_hint_y: None
+                    width: self.parent.width * 0.8  # Responsive width
+                    height: '50dp'
+                    on_release: root.open_registrationtime_dropdown(self)
+
+                # Dropdown button for Warmup
+                DropdownButton:
+                    id: warmup_button
+                    text: 'Warmup (min)'
+                    size_hint_x: None
+                    size_hint_y: None
+                    width: self.parent.width * 0.8  # Responsive width
+                    height: '50dp'
+                    on_release: root.open_warmup_dropdown(self)
+
+            # Column for Class button
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5  # Adjust to balance with the other column
+                padding: [10, 10, 0, 10]  # Added left padding to create space between columns
+
+                # Dropdown button for Class
+                DropdownButton:
+                    id: class_button
+                    text: 'Class'
+                    size_hint_x: None
+                    size_hint_y: None
+                    width: self.parent.width * 0.8  # Responsive width
+                    height: '50dp'
+                    on_release: root.open_class_dropdown(self)
+
+        # Back button in the bottom left corner
         BoxLayout:
-            size_hint_y: 0.1
+            size_hint: None, None
+            size: '100dp', '40dp'
+            pos_hint: {'x': 0, 'y': 0}
             MyButton:
                 text: 'Back'
                 size_hint: None, None
                 size: '100dp', '40dp'
-                pos_hint: {'x': 0, 'y': 0}
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
                 on_press:
