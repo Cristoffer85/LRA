@@ -2,14 +2,11 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.dropdown import DropDown
 from kivy.uix.button import Button
 
-class StartScreen(Screen):
-    pass
-
-class OptionsScreen(Screen):
+class FUNStart(Screen):
     def __init__(self, **kwargs):
-        super(OptionsScreen, self).__init__(**kwargs)
+        super(FUNStart, self).__init__(**kwargs)
 
-# Create DropDowns for each button
+        # Create DropDowns for each button
         self.class_dropdown = DropDown()
         classes = ["2WD", "4WD", "Custom.."]
         for class_name in classes:

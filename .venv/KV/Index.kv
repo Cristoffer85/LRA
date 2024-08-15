@@ -1,6 +1,6 @@
 #:kivy 2.3.0
 
-<StartScreen>:
+<Index>:
     # Main vertical BoxLayout
     BoxLayout:
         orientation: 'vertical'
@@ -89,7 +89,7 @@
                     height: '110dp'
                     on_press:
                         app.sm.transition.direction = 'left'
-                        app.sm.current = 'FUNRace'
+                        app.sm.current = 'FUNStart'
                     # Center the button
                     pos_hint: {'center_x': 0.5}
                     # Add padding to ensure text isn't too close to edges

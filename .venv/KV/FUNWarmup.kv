@@ -1,0 +1,34 @@
+#:kivy 2.3.0
+
+<FUNWarmup>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'FUN Warmup'
+            size_hint_y: 0.1
+
+    # Back button in the bottom left corner
+    BoxLayout:
+        size_hint: None, None
+        size: '100dp', '40dp'
+        pos_hint: {'x': 0, 'y': 0}
+        MyButton:
+            text: 'Back'
+            size_hint: None, None
+            size: '100dp', '40dp'
+            background_color: 0.8, 0.1, 0.1, 1
+            color: 1, 1, 1, 1
+            on_press:
+                app.sm.transition.direction = 'right'
+                app.sm.current = 'FUNRegister'
+                    
+        # Next button in the bottom right corner            
+        MyButton:
+            text: 'Next'
+            size_hint: None, None
+            size: '100dp', '40dp'
+            background_color: 0.1, 0.8, 0.1, 1
+            color: 1, 1, 1, 1
+            on_press:
+                app.sm.transition.direction = 'left'
+                app.sm.current = 'FUNCountdownToStart'
