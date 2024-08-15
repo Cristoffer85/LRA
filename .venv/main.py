@@ -18,7 +18,7 @@ Builder.load_file('KV/FUNCountdownToStart.kv')
 class MyScreenManager(ScreenManager):
     pass
 
-class MyApp(App):
+class LateraRaceTracer(App):
     def build(self):
         self.sm = MyScreenManager()
         self.sm.add_widget(Index(name='Index'))
@@ -29,4 +29,4 @@ class MyApp(App):
         return self.sm
 
 if __name__ == '__main__':
-    MyApp().run()
+    LateraRaceTracer().run()
