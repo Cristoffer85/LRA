@@ -8,7 +8,7 @@ from FUNWarmup import FUNWarmup
 from FUNCountdownToStart import FUNCountdownToStart
 
 # Load the kv files for each screen
-Builder.load_file('KV/widgets.kv')
+Builder.load_file('KV/Widgets.kv')
 Builder.load_file('KV/Index.kv')
 Builder.load_file('KV/FUNStart.kv')
 Builder.load_file('KV/FUNRegister.kv')
