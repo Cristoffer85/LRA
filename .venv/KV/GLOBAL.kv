@@ -1,0 +1,47 @@
+#:kivy 2.3.0
+
+# Global style class for LABEL, BUTTON, and DROPDOWN boxes
+# (Every rule shall have a general responsive approach)
+
+#--- LABELS (Textbox) ---------------------------------------------------------------------------------------------#
+<MyLabel@Label>:
+    font_size: min(self.parent.width * 0.2, self.parent.height * 0.3)
+    color: 0, 0, 0, 1                                                            # Black text
+    size_hint: None, None
+    size: self.texture_size
+    pos_hint: {'center_x': 0.5}
+    padding: [20, 0]
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1                                                     # White background
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]
+
+#--- BUTTONS ------------------------------------------------------------------------------------------------------#
+<MyButton@Button>:
+    size_hint: (None, None)
+    width: self.parent.width * 0.4
+    height: '50dp'
+    background_normal: ''
+    color: 0, 0, 0, 1                                                           # Default Black text  
+    font_size: min(self.height * 0.5, 30)
+    padding: [10, 10]
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]
+
+#--- DROPDOWN BUTTONS -----------------------------------------------------------------------------------------------#
+<DropdownButton@MyButton>:
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]

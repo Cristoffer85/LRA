@@ -55,3 +55,13 @@ class FUNStart(Screen):
 
     def set_class(self, instance):
         self.ids.class_button.text = f'Class: {instance.text}'
+
+    def go_to_index(self):
+        # Transition to the Index screen
+        self.manager.transition.direction = 'right'
+        self.manager.current = 'Index'
+
+    def go_to_funregister(self):
+        # Transition to the FUNRegister screen
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'FUNRegister'

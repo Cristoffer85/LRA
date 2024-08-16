@@ -3,7 +3,7 @@
 <FUNStart>:
     FloatLayout:
 
-        # Race Setup box in the top left corner
+#--- Race Setup box in top left corner ------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
             size_hint: None, None
@@ -15,88 +15,74 @@
                 bold: True
                 halign: 'left'
 
-        # Main layout for buttons
+#--- Main layout for buttons -------------------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'horizontal'
             size_hint: None, None
-            size: '700dp', '400dp'  # Adjust size to fit both columns and padding
-            pos_hint: {'x': 0.25, 'top': 1}  # Adjust position to align with Race Setup
+            size: '700dp', '400dp'
+            pos_hint: {'x': 0.25, 'top': 1}
 
-            # Column for Heatlength, Registrationtime, and Warmup buttons
+    # Column for Heatlength, Registrationtime and Warmup buttons
             BoxLayout:
                 orientation: 'vertical'
-                size_hint_x: 0.5  # Adjust to balance with the other column
+                size_hint_x: 0.5
                 spacing: 10
-                padding: [0, 10, 10, 10]  # Added right padding to provide space between columns
+                padding: [0, 10, 10, 10]
 
-                # Dropdown button for Heatlength
                 DropdownButton:
                     id: heatlength_button
                     text: 'Heatlength (min)'
-                    size_hint_x: None
-                    size_hint_y: None
-                    width: self.parent.width * 0.8  # Responsive width
-                    height: '50dp'
+                    background_color: 0.6, 1, 0.6, 1
+                    color: 0, 0, 0, 1
                     on_release: root.open_heatlength_dropdown(self)
 
-                # Dropdown button for Registrationtime
                 DropdownButton:
                     id: registrationtime_button
                     text: 'Time to Register (min)'
-                    size_hint_x: None
-                    size_hint_y: None
-                    width: self.parent.width * 0.8  # Responsive width
-                    height: '50dp'
+                    background_color: 0.6, 1, 0.6, 1
+                    color: 0, 0, 0, 1
                     on_release: root.open_registrationtime_dropdown(self)
 
-                # Dropdown button for Warmup
                 DropdownButton:
                     id: warmup_button
                     text: 'Warmup (min)'
-                    size_hint_x: None
-                    size_hint_y: None
-                    width: self.parent.width * 0.8  # Responsive width
-                    height: '50dp'
+                    background_color: 0.6, 1, 0.6, 1
+                    color: 0, 0, 0, 1
                     on_release: root.open_warmup_dropdown(self)
 
-            # Column for Class button
+    # Column for Class button
             BoxLayout:
                 orientation: 'vertical'
-                size_hint_x: 0.5  # Adjust to balance with the other column
-                padding: [10, 10, 0, 10]  # Added left padding to create space between columns
+                size_hint_x: 0.5
+                padding: [10, 10, 0, 10]
 
-                # Dropdown button for Class
                 DropdownButton:
                     id: class_button
                     text: 'Class'
-                    size_hint_x: None
-                    size_hint_y: None
-                    width: self.parent.width * 0.8  # Responsive width
-                    height: '50dp'
+                    background_color: 0.6, 1, 0.6, 1
+                    color: 0, 0, 0, 1
                     on_release: root.open_class_dropdown(self)
 
-        # Back button in the bottom left corner
+#------------ Bottom Navigate buttons -----------------------------------------------------------------------------------#
+
+        # Size and position
         BoxLayout:
             size_hint: None, None
-            size: '100dp', '40dp'
+            size: '200dp', '40dp'
             pos_hint: {'x': 0, 'y': 0}
+
+            # Back
             MyButton:
                 text: 'Back'
-                size_hint: None, None
-                size: '100dp', '40dp'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press:
-                    app.sm.transition.direction = 'right'
-                    app.sm.current = 'Index'
-                    
-        # Next button in the bottom right corner            
+                on_press: root.go_to_index()
+
+            # Next
             MyButton:
                 text: 'Next'
-                size_hint: None, None
-                size: '100dp', '40dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press:
-                    app.sm.transition.direction = 'left'
-                    app.sm.current = 'FUNRegister'
+                on_press: root.go_to_funregister()
+
+#-----------------------------------------------------------------------------------------------------------------------#

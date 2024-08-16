@@ -1,98 +1,81 @@
 #:kivy 2.3.0
 
 <Index>:
-    # Main vertical BoxLayout
-    BoxLayout:
-        orientation: 'vertical'
-        spacing: 20
-        padding: 20
+    FloatLayout:
 
-        # Welcome box at the top
+#--- Centered Label box at the top --------------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
-            size_hint_y: 0.2
+            size_hint: None, None
+            size: '200dp', '100dp'
+            pos_hint: {'center_x': 0.5, 'top': 1}
             padding: 10
             MyLabel:
-                markup: True
+                text: 'Welcome to Latera! Make a selection below:'
+                bold: True
                 halign: 'center'
-                text: '[size=60sp]Welcome to Latera![/size]\n[size=30sp]Please make a selection below:[/size]'
 
-        # GridLayout for Solo mode and Versus mode with buttons
-        GridLayout:
-            cols: 2
-            spacing: 20
-            size_hint_y: 0.5
-            padding: 10
+#--- Layout for below columns -------------------------------------------------------------------------------------------#
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: '700dp', '400dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-            # Column for Solo mode and buttons
+    ################################### Top row for column labels ###################################
             BoxLayout:
-                orientation: 'vertical'
-                size_hint_x: 0.5
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: '50dp'  # Fixed height to accommodate the labels
                 spacing: 10
-                padding: [0, 10, 0, 10]  # Padding for spacing
 
-                # Solo mode label
-                BoxLayout:
-                    orientation: 'vertical'
-                    size_hint_y: None
-                    MyLabel:
-                        markup: True
-                        halign: 'center'
-                        text: '[size=30sp]Solo mode[/size]'
-
-                # New Button 1
-                MyButton:
-                    text: 'Free Practice'
-                    size_hint: (None, None)
-                    width: '200dp'  # Fixed width for consistency
-                    height: '50dp'
-                    on_press: app.option_selected(self)
-                    # Center the button
-                    pos_hint: {'center_x': 0.5}
-                    # Add padding to ensure text isn't too close to edges
-                    padding: [10, 5]  # [horizontal padding, vertical padding]
-
-                # New Button 2
-                MyButton:
-                    text: 'Time trial'
-                    size_hint: (None, None)
-                    width: '200dp'  # Fixed width for consistency
-                    height: '50dp'
-                    on_press: app.option_selected(self)
-                    # Center the button
-                    pos_hint: {'center_x': 0.5}
-                    # Add padding to ensure text isn't too close to edges
-                    padding: [10, 5]  # [horizontal padding, vertical padding]
-
-            # Column for Versus mode and Start FUN Race button
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint_x: 0.5
-                spacing: 10
-                padding: [0, 10, 0, 10]  # Padding for spacing
-
-                # Versus mode label
-                BoxLayout:
-                    orientation: 'vertical'
-                    size_hint_y: None
-                    MyLabel:
-                        markup: True
-                        halign: 'center'
-                        text: '[size=30sp]Versus mode[/size]'
-
-                # Start FUN Race button
-                MyButton:
-                    text: 'Start \nFUN Race'
+                MyLabel:
+                    text: 'Solo Racing'
+                    bold: True
                     halign: 'center'
-                    size_hint: (None, None)
-                    width: '300dp'  # Fixed width for consistency
-                    height: '110dp'
-                    on_press:
-                        app.sm.transition.direction = 'left'
-                        app.sm.current = 'FUNStart'
-                    # Center the button
-                    pos_hint: {'center_x': 0.5}
-                    # Add padding to ensure text isn't too close to edges
-                    padding: [20, 10]  # [horizontal padding, vertical padding]
-                    # Adjust font size to fit button size better
-                    font_size: min(self.height * 0.3, self.width * 0.2)
+                    size_hint_x: 0.5
+
+                MyLabel:
+                    text: 'Versus Racing'
+                    bold: True
+                    halign: 'center'
+                    size_hint_x: 0.5
+
+    ################################### Bottom row for buttons ######################################
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 1  # Make this layout expand to fill the remaining space
+                spacing: 10
+
+                # //////////////////////////// Left column \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_x: 0.5
+                    spacing: 10
+                    padding: [0, 10, 10, 10]
+                    # Centering buttons horizontally
+                    Button:
+                        text: 'Free Practice'
+                        background_color: 255, 0, 0, 1                      # Red
+                        pos_hint: {'center_x': 0.5}
+                        on_press: print("Left Button 1 Pressed")
+
+                    Button:
+                        text: 'Time Trial'
+                        background_color: 255, 0, 0, 1                      # Red
+                        pos_hint: {'center_x': 0.5}
+                        on_press: print("Left Button 2 Pressed")
+
+                # //////////////////////////// Right column \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_x: 0.5
+                    padding: [10, 10, 0, 10]
+                    # Centering button horizontally
+                    Button:
+                        text: 'FUN Race'
+                        background_color: 0, 255, 0, 1                      # Lime green
+                        pos_hint: {'center_x': 0.5}
+                        on_press: root.go_to_funstart()
+
+#-----------------------------------------------------------------------------------------------------------------------#
