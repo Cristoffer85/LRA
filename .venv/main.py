@@ -5,6 +5,7 @@ from Index import Index
 from FUNStart import FUNStart
 from FUNRegister import FUNRegister
 from FUNWarmup import FUNWarmup
+from FUNLiveboard import FUNLiveboard
 from FUNCountdownToStart import FUNCountdownToStart
 
 # Load the kv files for each screen
@@ -14,6 +15,7 @@ Builder.load_file('KV/FUNStart.kv')
 Builder.load_file('KV/FUNRegister.kv')
 Builder.load_file('KV/FUNWarmup.kv')
 Builder.load_file('KV/FUNCountdownToStart.kv')
+Builder.load_file('KV/FUNLiveboard.kv')
 
 class MyScreenManager(ScreenManager):
     pass
@@ -26,6 +28,7 @@ class LateraRaceTracer(App):
         self.sm.add_widget(FUNRegister(name='FUNRegister'))
         self.sm.add_widget(FUNWarmup(name='FUNWarmup'))
         self.sm.add_widget(FUNCountdownToStart(name='FUNCountdownToStart'))
+        self.sm.add_widget(FUNLiveboard(name='FUNLiveboard'))
         return self.sm
 
 if __name__ == '__main__':

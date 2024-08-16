@@ -26,7 +26,7 @@
             BoxLayout:
                 orientation: 'horizontal'
                 size_hint_y: None
-                height: '50dp'  # Fixed height to accommodate the labels
+                height: '50dp'                                              # Fixed height to accommodate the labels
                 spacing: 10
 
                 MyLabel:
@@ -34,17 +34,19 @@
                     bold: True
                     halign: 'center'
                     size_hint_x: 0.5
+                    font_size: '24sp'                                       # Adjust font size here
 
                 MyLabel:
                     text: 'Versus Racing'
                     bold: True
                     halign: 'center'
                     size_hint_x: 0.5
+                    font_size: '24sp'                                       # Adjust font size here
 
     ################################### Bottom row for buttons ######################################
             BoxLayout:
                 orientation: 'horizontal'
-                size_hint_y: 1  # Make this layout expand to fill the remaining space
+                size_hint_y: 1                                              # Make this layout expand to fill the remaining space
                 spacing: 10
 
                 # //////////////////////////// Left column \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -56,13 +58,17 @@
                     # Centering buttons horizontally
                     Button:
                         text: 'Free Practice'
-                        background_color: 255, 0, 0, 1                      # Red
+                        background_color: 1, 0, 0, 1                        # Background Red
+                        color: 1, 1, 1, 1                                   # Text White
+                        font_size: '30sp'                                   # Text size
                         pos_hint: {'center_x': 0.5}
                         on_press: print("Left Button 1 Pressed")
 
                     Button:
                         text: 'Time Trial'
-                        background_color: 255, 0, 0, 1                      # Red
+                        background_color: 1, 0, 0, 1                        # Background Red
+                        color: 1, 1, 1, 1                                   # Text White
+                        font_size: '30sp'                                   # Text size
                         pos_hint: {'center_x': 0.5}
                         on_press: print("Left Button 2 Pressed")
 
@@ -74,7 +80,9 @@
                     # Centering button horizontally
                     Button:
                         text: 'FUN Race'
-                        background_color: 0, 255, 0, 1                      # Lime green
+                        background_color: 0, 1, 0, 1                        # Background Lime Green
+                        color: 0, 0, 0, 1                                   # Text Black
+                        font_size: '40sp'                                   # Text size
                         pos_hint: {'center_x': 0.5}
                         on_press: root.go_to_funstart()
 

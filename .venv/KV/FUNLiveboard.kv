@@ -1,9 +1,9 @@
 #:kivy 2.3.0
 
-<FUNCountdownToStart>:
+<FUNLiveboard>:
     FloatLayout:
 
-#--- Label box in top left corner ------------------------------------------------------------------------------#
+#--- Race Setup box in top left corner ------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
             size_hint: None, None
@@ -11,7 +11,7 @@
             pos_hint: {'x': 0, 'top': 1}
             padding: 10
             MyLabel:
-                text: 'Countdown To Start:'
+                text: 'Race Liveboard:'
                 bold: True
                 halign: 'left'
 
@@ -28,13 +28,13 @@
                 text: 'Back'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press: root.go_to_funwarmup()
+                on_press: root.go_to_funcountdown()
 
             # Next
             MyButton:
-                text: 'Next'
+                text: 'Start'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press: root.go_to_funliveboard()
+                on_press: root.go_to_index()
 
 #-----------------------------------------------------------------------------------------------------------------------#
