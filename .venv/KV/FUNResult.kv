@@ -1,6 +1,6 @@
 #:kivy 2.3.0
 
-<FUNRegister>:
+<FUNResult>:
     FloatLayout:
 
 #--- Label box in top left corner ---------------------------------------------------------------------------------------#
@@ -11,7 +11,7 @@
             pos_hint: {'x': 0, 'top': 1}
             padding: 10
             MyLabel:
-                text: 'Register cars:'
+                text: 'Results:'
                 bold: True
                 halign: 'left'
 
@@ -23,18 +23,18 @@
             size: '200dp', '40dp'
             pos_hint: {'x': 0, 'y': 0}
 
-            # Back to funstart
+            # Back to Liveboard
             MyButton:
                 text: 'Back'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press: root.go_to_funstart()
+                on_press: root.go_to_funliveboard()
 
-            # Next to funwarmup
+            # Next to Index
             MyButton:
-                text: 'Next'
+                text: 'Start'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press: root.go_to_funwarmup()
+                on_press: root.go_to_index()
 
 #-----------------------------------------------------------------------------------------------------------------------#
