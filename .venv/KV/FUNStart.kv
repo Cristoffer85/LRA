@@ -1,67 +1,45 @@
 #:kivy 2.3.0
 
 <FUNStart>:
-    FloatLayout:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
 
-#--- Race Setup box in top left corner ------------------------------------------------------------------------------#
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint: None, None
-            size: '200dp', '100dp'
-            pos_hint: {'x': 0, 'top': 1}
-            padding: 10
-            MyLabel:
-                text: 'Race Setup:'
-                bold: True
-                halign: 'left'
+#------------ Label at the top left -------------------------------------------------------------------------------------#
+        Label:
+            text: "Race Setup:"
+            size_hint: (1, 0.1)
+            halign: 'left'
+            valign: 'top'
+            text_size: self.size
 
-#--- Main layout for buttons -------------------------------------------------------------------------------------------#
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint: None, None
-            size: '700dp', '400dp'
-            pos_hint: {'x': 0.25, 'top': 1}
+#------------ Dropdown lists --------------------------------------------------------------------------------------------#
 
-    # Column for Heatlength, Registrationtime and Warmup buttons
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint_x: 0.5
-                spacing: 10
-                padding: [0, 10, 10, 10]
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 10
+        size_hint: (1, 0.2)
 
-                DropdownButton:
-                    id: heatlength_button
-                    text: 'Heatlength (min)'
-                    background_color: 0.6, 1, 0.6, 1
-                    color: 0, 0, 0, 1
-                    on_release: root.open_heatlength_dropdown(self)
+        # Class Dropdown
+        Spinner:
+            text: "Class:"
+            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
 
-                DropdownButton:
-                    id: registrationtime_button
-                    text: 'Time to Register (min)'
-                    background_color: 0.6, 1, 0.6, 1
-                    color: 0, 0, 0, 1
-                    on_release: root.open_registrationtime_dropdown(self)
+        # Registrationtime Dropdown
+        Spinner:
+            text: "Registrationtime:"
+            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
 
-                DropdownButton:
-                    id: warmup_button
-                    text: 'Warmup (min)'
-                    background_color: 0.6, 1, 0.6, 1
-                    color: 0, 0, 0, 1
-                    on_release: root.open_warmup_dropdown(self)
+        # Heatlength Dropdown
+        Spinner:
+            text: "Heatlength:"
+            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
 
-    # Column for Class button
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint_x: 0.5
-                padding: [10, 10, 0, 10]
-
-                DropdownButton:
-                    id: class_button
-                    text: 'Class'
-                    background_color: 0.6, 1, 0.6, 1
-                    color: 0, 0, 0, 1
-                    on_release: root.open_class_dropdown(self)
+        # Warmup Dropdown
+        Spinner:
+            text: "Warmup:"
+            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
 
 #------------ Bottom Navigate buttons -----------------------------------------------------------------------------------#
 
@@ -85,4 +63,4 @@
                 color: 1, 1, 1, 1
                 on_press: root.go_to_funregister()
 
-#-----------------------------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------------------------------------#
