@@ -6,7 +6,7 @@
         padding: 20
         spacing: 10
 
-#------------ Label at the top left -------------------------------------------------------------------------------------#
+        # Label at the top left
         Label:
             text: "Race Setup:"
             size_hint: (1, 0.1)
@@ -14,53 +14,60 @@
             valign: 'top'
             text_size: self.size
 
-#------------ Dropdown lists --------------------------------------------------------------------------------------------#
-
-    BoxLayout:
-        orientation: 'horizontal'
-        spacing: 10
-        size_hint: (1, 0.2)
-
-        # Class Dropdown
-        Spinner:
-            text: "Class:"
-            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
-
-        # Registrationtime Dropdown
-        Spinner:
-            text: "Registrationtime:"
-            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
-
-        # Heatlength Dropdown
-        Spinner:
-            text: "Heatlength:"
-            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
-
-        # Warmup Dropdown
-        Spinner:
-            text: "Warmup:"
-            values: ["Option 1", "Option 2", "Option 3", "Option 4"]
-
-#------------ Bottom Navigate buttons -----------------------------------------------------------------------------------#
-
-        # Size and position
+        # Dropdowns just below the label
         BoxLayout:
-            size_hint: None, None
-            size: '200dp', '40dp'
-            pos_hint: {'x': 0, 'y': 0}
+            orientation: 'horizontal'
+            spacing: 10
+            size_hint: (1, 0.2)
 
-            # Back
-            MyButton:
+            # Class Dropdown
+            Spinner:
+                text: "Class:"
+                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+
+            # Registrationtime Dropdown
+            Spinner:
+                text: "Registrationtime:"
+                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+
+            # Heatlength Dropdown
+            Spinner:
+                text: "Heatlength:"
+                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+
+            # Warmup Dropdown
+            Spinner:
+                text: "Warmup:"
+                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+
+        # Add a spacer to push buttons to the bottom
+        Widget:
+            size_hint_y: None
+            height: '200dp'
+
+        # Bottom navigation buttons positioned at corners
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            size_hint: (1, 0.2)
+
+            Button:
                 text: 'Back'
+                size_hint: None, None
+                size: '100dp', '50dp'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
                 on_press: root.go_to_index()
 
-            # Next
-            MyButton:
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+            size_hint: (1, 0.2)
+
+            Button:
                 text: 'Next'
+                size_hint: None, None
+                size: '100dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
                 on_press: root.go_to_funregister()
-
-#------------------------------------------------------------------------------------------------------------------------#
