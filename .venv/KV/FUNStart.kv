@@ -1,12 +1,16 @@
 #:kivy 2.3.0
 
 <FUNStart>:
+    class_selection: class_spinner.text
+    registrationtime_selection: registrationtime_spinner.text
+    heatlength_selection: heatlength_spinner.text
+    warmup_selection: warmup_spinner.text
+
     BoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
 
-        # Label at the top left
         Label:
             text: "Race Setup:"
             size_hint: (1, 0.1)
@@ -14,41 +18,89 @@
             valign: 'top'
             text_size: self.size
 
-        # Dropdowns just below the label
         BoxLayout:
             orientation: 'horizontal'
             spacing: 10
             size_hint: (1, 0.2)
 
-            # Class Dropdown
-            Spinner:
-                text: "Class:"
-                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                size_hint: (1, 1)
 
-            # Registrationtime Dropdown
-            Spinner:
-                text: "Registrationtime:"
-                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+                Label:
+                    text: "Class:"
+                    size_hint: (1, 0.4)
+                    halign: 'center'
+                    valign: 'bottom'
+                    text_size: self.size
 
-            # Heatlength Dropdown
-            Spinner:
-                text: "Heatlength:"
-                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+                Spinner:
+                    id: class_spinner
+                    text: "2WD"  # Default value
+                    values: ["2WD", "4WD", "Tank", "Custom.."]
+                    size_hint: (1, 0.6)
 
-            # Warmup Dropdown
-            Spinner:
-                text: "Warmup:"
-                values: ["Option 1", "Option 2", "Option 3", "Option 4"]
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                size_hint: (1, 1)
 
-        # Add a spacer to push buttons to the bottom
+                Label:
+                    text: "Registrationtime:"
+                    size_hint: (1, 0.4)
+                    halign: 'center'
+                    valign: 'bottom'
+                    text_size: self.size
+
+                Spinner:
+                    id: registrationtime_spinner
+                    text: "2 min"  # Default value
+                    values: ["2 min", "3 min", "4 min", "5 min"]
+                    size_hint: (1, 0.6)
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                size_hint: (1, 1)
+
+                Label:
+                    text: "Heatlength:"
+                    size_hint: (1, 0.4)
+                    halign: 'center'
+                    valign: 'bottom'
+                    text_size: self.size
+
+                Spinner:
+                    id: heatlength_spinner
+                    text: "5 min"  # Default value
+                    values: ["5 min", "10 min", "15 min", "20 min"]
+                    size_hint: (1, 0.6)
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                size_hint: (1, 1)
+
+                Label:
+                    text: "Warmup:"
+                    size_hint: (1, 0.4)
+                    halign: 'center'
+                    valign: 'bottom'
+                    text_size: self.size
+
+                Spinner:
+                    id: warmup_spinner
+                    text: "1 min"  # Default value
+                    values: ["1 min", "2 min", "3 min", "4 min"]
+                    size_hint: (1, 0.6)
+
         Widget:
             size_hint_y: None
             height: '200dp'
 
-        # Bottom navigation buttons positioned at corners
-        AnchorLayout:
-            anchor_x: 'left'
-            anchor_y: 'bottom'
+        BoxLayout:
+            orientation: 'horizontal'
             size_hint: (1, 0.2)
 
             Button:
@@ -57,12 +109,12 @@
                 size: '100dp', '50dp'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
+                pos_hint: {'x': 0}
                 on_press: root.go_to_index()
 
-        AnchorLayout:
-            anchor_x: 'right'
-            anchor_y: 'bottom'
-            size_hint: (1, 0.2)
+            Widget:
+                size_hint_x: None
+                width: self.parent.width - 220
 
             Button:
                 text: 'Next'
@@ -70,4 +122,5 @@
                 size: '100dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
+                pos_hint: {'right': 1}
                 on_press: root.go_to_funregister()

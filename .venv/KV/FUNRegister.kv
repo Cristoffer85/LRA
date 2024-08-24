@@ -1,40 +1,185 @@
 #:kivy 2.3.0
 
 <FUNRegister>:
-    FloatLayout:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 50
 
-#--- Label box in top left corner ---------------------------------------------------------------------------------------#
+        # BoxLayout to hold the label and its background
         BoxLayout:
-            orientation: 'vertical'
-            size_hint: None, None
-            size: '200dp', '100dp'
-            pos_hint: {'x': 0, 'top': 1}
-            padding: 10
-            MyLabel:
-                text: 'Register cars:'
-                bold: True
+            size_hint: (0.2, 0.1)
+            padding: [10, 10]  # Padding inside the white box
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # White background color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Summary:"
+                color: 0, 0, 0, 1  # Black text color
                 halign: 'left'
+                valign: 'middle'
+                text_size: self.size
 
-#------------ Bottom Navigate buttons -----------------------------------------------------------------------------------#
+        # GridLayout to hold the selected values with white boxes and black rows
+        GridLayout:
+            cols: 1
+            spacing: 5
+            size_hint_y: None
+            height: self.minimum_height
 
-        # Size and position
+            # Class selection row
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '40dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Class: " + root.class_selection
+                    color: 0, 0, 0, 1  # Black text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+            # Separator (black row)
+            BoxLayout:
+                size_hint_y: None
+                height: '2dp'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Black background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            # Registration time selection row
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '40dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Registration Time: " + root.registrationtime_selection
+                    color: 0, 0, 0, 1  # Black text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+            # Separator (black row)
+            BoxLayout:
+                size_hint_y: None
+                height: '2dp'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Black background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            # Heatlength selection row
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '40dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Heat Length: " + root.heatlength_selection
+                    color: 0, 0, 0, 1  # Black text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+            # Separator (black row)
+            BoxLayout:
+                size_hint_y: None
+                height: '2dp'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Black background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            # Warmup selection row
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '40dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Warmup: " + root.warmup_selection
+                    color: 0, 0, 0, 1  # Black text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+        # Countdown Timer Label
+        Label:
+            id: countdown_label
+            text: ""
+            color: 1, 1, 1, 1  # White text color
+            size_hint_y: None
+            height: '40dp'
+            font_size: '20sp'
+
+        # Bottom navigation buttons on the same row and separate corners
         BoxLayout:
-            size_hint: None, None
-            size: '200dp', '40dp'
-            pos_hint: {'x': 0, 'y': 0}
+            orientation: 'horizontal'
+            size_hint: (1, 0.2)
 
-            # Back to funstart
-            MyButton:
+            Button:
                 text: 'Back'
+                size_hint: None, None
+                size: '100dp', '50dp'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
+                pos_hint: {'x': 0}
                 on_press: root.go_to_funstart()
 
-            # Next to funwarmup
-            MyButton:
-                text: 'Next'
+            Widget:
+                size_hint_x: None
+                width: self.parent.width - 220  # Adjust width based on button sizes
+
+            Button:
+                text: 'START registration:'
+                size_hint: None, None
+                size: '130dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
-                on_press: root.go_to_funwarmup()
-
-#-----------------------------------------------------------------------------------------------------------------------#
+                pos_hint: {'right': 1}
+                on_press: root.start_countdown(countdown_label)

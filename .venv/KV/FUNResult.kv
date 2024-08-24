@@ -1,40 +1,43 @@
 #:kivy 2.3.0
 
 <FUNResult>:
-    FloatLayout:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
 
-#--- Label box in top left corner ---------------------------------------------------------------------------------------#
+        # Label at the top left
+        Label:
+            text: "Result:"
+            size_hint: (1, 0.1)
+            halign: 'left'
+            valign: 'top'
+            text_size: self.size
+
+#------------ Bottom navigation buttons on the same row and separate corners -------------------------------------------#
         BoxLayout:
-            orientation: 'vertical'
-            size_hint: None, None
-            size: '200dp', '100dp'
-            pos_hint: {'x': 0, 'top': 1}
-            padding: 10
-            MyLabel:
-                text: 'Results:'
-                bold: True
-                halign: 'left'
+            orientation: 'horizontal'
+            size_hint: (1, 0.2)
 
-#------------ Bottom Navigate buttons -----------------------------------------------------------------------------------#
-
-        # Size and position
-        BoxLayout:
-            size_hint: None, None
-            size: '200dp', '40dp'
-            pos_hint: {'x': 0, 'y': 0}
-
-            # Back to Liveboard
-            MyButton:
+            Button:
                 text: 'Back'
+                size_hint: None, None
+                size: '100dp', '50dp'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
+                pos_hint: {'x': 0}
                 on_press: root.go_to_funliveboard()
 
-            # Next to Index
-            MyButton:
-                text: 'Start'
+            Widget:
+                size_hint_x: None
+                width: self.parent.width - 220  # Adjust width based on button sizes
+
+            Button:
+                text: 'Back to Start'
+                size_hint: None, None
+                size: '100dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
+                pos_hint: {'right': 1}
                 on_press: root.go_to_index()
-
 #-----------------------------------------------------------------------------------------------------------------------#
