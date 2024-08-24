@@ -1,9 +1,34 @@
 from kivy.uix.screenmanager import Screen
+from kivy.clock import Clock
 
 class FUNCountdownToStart(Screen):
-       
+    countdown_event = None  # Track the scheduled countdown event
+
+    def start_countdown(self, countdown_label, next_button, back_button, button_box):
+        if self.countdown_event:  # If a countdown is already running, do nothing
+            return
+
+        # Hide other buttons and show the countdown label
+        button_box.opacity = 0
+        countdown_label.opacity = 1
+        countdown_label.text = "Countdown: 10"  # Initial text for visibility
+        next_button.disabled = True
+        back_button.disabled = True
+
+        # Start countdown from 10 seconds
+        self.countdown_time = 10
+        self.countdown_event = Clock.schedule_interval(lambda dt: self.update_countdown(countdown_label), 1)
+
+    def update_countdown(self, countdown_label):
+        self.countdown_time -= 1
+        countdown_label.text = f"Countdown: {self.countdown_time}"
+        if self.countdown_time <= 0:
+            self.countdown_event.cancel()
+            self.countdown_event = None
+            self.go_to_funliveboard()
+
     def go_to_funwarmup(self):
-        # Back to Funwarmup screen
+        # Back to FunWarmup screen
         self.manager.transition.direction = 'right'
         self.manager.current = 'FUNWarmup'
 

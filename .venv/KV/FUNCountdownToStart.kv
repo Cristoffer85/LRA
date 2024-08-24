@@ -1,4 +1,4 @@
-#:kivy 2.3.0
+#:kivy 2.0.3
 
 <FUNCountdownToStart>:
     BoxLayout:
@@ -6,20 +6,41 @@
         padding: 20
         spacing: 10
 
-        # Label at the top left
-        Label:
-            text: "Countdown before start!"
-            size_hint: (1, 0.1)
-            halign: 'left'
-            valign: 'top'
-            text_size: self.size
+        # Centralized instruction label
+        FloatLayout:
+            Label:
+                text: "Place your cars behind startline"
+                font_size: '36sp'
+                color: 0, 0, 0, 1  # Black text
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
 
-#------------ Bottom navigation buttons on the same row and separate corners -------------------------------------------#
+        # Countdown timer display
+        Label:
+            id: countdown_label
+            text: ""
+            font_size: '48sp'
+            color: 0, 0, 0, 1  # Black text
+            size_hint: (1, 0.2)
+            halign: 'center'
+            valign: 'middle'
+            opacity: 0  # Initially hidden
+
+        # Bottom navigation buttons
         BoxLayout:
+            id: button_box
             orientation: 'horizontal'
             size_hint: (1, 0.2)
 
             Button:
+                id: back_button
                 text: 'Back'
                 size_hint: None, None
                 size: '100dp', '50dp'
@@ -33,11 +54,11 @@
                 width: self.parent.width - 220  # Adjust width based on button sizes
 
             Button:
+                id: next_button
                 text: 'Next'
                 size_hint: None, None
                 size: '100dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
                 pos_hint: {'right': 1}
-                on_press: root.go_to_funliveboard()
-#-----------------------------------------------------------------------------------------------------------------------#
+                on_press: root.start_countdown(countdown_label, next_button, back_button, button_box)

@@ -4,12 +4,13 @@
     BoxLayout:
         orientation: 'vertical'
         padding: 20
-        spacing: 50
+        spacing: 20
 
-        # BoxLayout to hold the label and its background
+#------------ Top label ---------------------------------------------------------------------------------------------#
         BoxLayout:
             size_hint: (0.2, 0.1)
-            padding: [10, 10]  # Padding inside the white box
+            padding: [10, 10]
+            pos_hint: {'x': 0}
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1  # White background color
@@ -24,18 +25,17 @@
                 valign: 'middle'
                 text_size: self.size
 
-        # GridLayout to hold the selected values with white boxes and black rows
+#------------ Race setup details -------------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
-            spacing: 5
-            size_hint_y: None
-            height: self.minimum_height
+            spacing: 3
+            size_hint: (0.4, 0.3)
+            pos_hint: {'right': 1}
 
-            # Class selection row
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '40dp'
+                height: '30dp'
                 padding: [10, 5]
 
                 canvas.before:
@@ -52,10 +52,9 @@
                     valign: 'middle'
                     halign: 'left'
 
-            # Separator (black row)
             BoxLayout:
                 size_hint_y: None
-                height: '2dp'
+                height: '1dp'  # Thinner separator
                 canvas.before:
                     Color:
                         rgba: 0, 0, 0, 1  # Black background
@@ -63,11 +62,10 @@
                         pos: self.pos
                         size: self.size
 
-            # Registration time selection row
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '40dp'
+                height: '30dp'
                 padding: [10, 5]
 
                 canvas.before:
@@ -84,10 +82,9 @@
                     valign: 'middle'
                     halign: 'left'
 
-            # Separator (black row)
             BoxLayout:
                 size_hint_y: None
-                height: '2dp'
+                height: '1dp'
                 canvas.before:
                     Color:
                         rgba: 0, 0, 0, 1  # Black background
@@ -95,11 +92,10 @@
                         pos: self.pos
                         size: self.size
 
-            # Heatlength selection row
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '40dp'
+                height: '30dp'
                 padding: [10, 5]
 
                 canvas.before:
@@ -116,10 +112,9 @@
                     valign: 'middle'
                     halign: 'left'
 
-            # Separator (black row)
             BoxLayout:
                 size_hint_y: None
-                height: '2dp'
+                height: '1dp'
                 canvas.before:
                     Color:
                         rgba: 0, 0, 0, 1  # Black background
@@ -127,11 +122,10 @@
                         pos: self.pos
                         size: self.size
 
-            # Warmup selection row
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '40dp'
+                height: '30dp'
                 padding: [10, 5]
 
                 canvas.before:
@@ -147,17 +141,105 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+#------------ Driver details -------------------------------------------------------------------------------------------#
+        GridLayout:
+            cols: 1
+            spacing: 5
+            size_hint: (1, 0.4)
 
-        # Countdown Timer Label
+    #------------ Driver 1 details ---------------------------------------------------------------------------------------#
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '30dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Light grey background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "Driver 1: "
+                    color: 1, 1, 1, 1  # White text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+    #------------ Driver 2 details ---------------------------------------------------------------------------------------#
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '30dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Light grey background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "Driver 2: "
+                    color: 1, 1, 1, 1  # White text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+    #------------ Driver 3 details ---------------------------------------------------------------------------------------#
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '30dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Light grey background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Driver 3: "
+                    color: 1, 1, 1, 1  # White text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+    #------------ Driver 4 details ---------------------------------------------------------------------------------------#
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '30dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Light grey background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Driver 4: "
+                    color: 1, 1, 1, 1  # White text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+#------------ Countdown Timer, initially invisible ------------------------------------------------------------------------------------------#
         Label:
             id: countdown_label
-            text: ""
+            text: "Time Remaining: "
+            font_size: '24sp'
             color: 1, 1, 1, 1  # White text color
             size_hint_y: None
-            height: '40dp'
-            font_size: '20sp'
+            height: '50dp'
+            # Make sure the timer label is visible by default
+            opacity: 0
 
-        # Bottom navigation buttons on the same row and separate corners
         BoxLayout:
             orientation: 'horizontal'
             size_hint: (1, 0.2)
@@ -173,13 +255,13 @@
 
             Widget:
                 size_hint_x: None
-                width: self.parent.width - 220  # Adjust width based on button sizes
+                width: self.parent.width - 220
 
             Button:
-                text: 'START registration:'
+                id: start_button
+                text: 'START Registration'
                 size_hint: None, None
                 size: '130dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
-                pos_hint: {'right': 1}
-                on_press: root.start_countdown(countdown_label)
+                on_press: root.start_countdown(countdown_label, self)

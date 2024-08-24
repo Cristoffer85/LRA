@@ -14,7 +14,23 @@
             valign: 'top'
             text_size: self.size
 
-#------------ Bottom navigation buttons on the same row and separate corners -------------------------------------------#
+        # Countdown timer centered in the middle
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.7)  # Takes most of the screen height
+            padding: 0
+            spacing: 0
+
+            Label:
+                id: countdown_label
+                text: "Time Remaining: "  # This will be updated by Python code
+                font_size: '48sp'
+                color: 1, 1, 1, 1  # White text
+                size_hint: None, None
+                size: self.texture_size  # Adjust to text size
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center horizontally and vertically
+
+        # Bottom navigation buttons
         BoxLayout:
             orientation: 'horizontal'
             size_hint: (1, 0.2)
@@ -31,13 +47,3 @@
             Widget:
                 size_hint_x: None
                 width: self.parent.width - 220  # Adjust width based on button sizes
-
-            Button:
-                text: 'Next'
-                size_hint: None, None
-                size: '100dp', '50dp'
-                background_color: 0.1, 0.8, 0.1, 1
-                color: 1, 1, 1, 1
-                pos_hint: {'right': 1}
-                on_press: root.go_to_funcountdown()
-#-----------------------------------------------------------------------------------------------------------------------#

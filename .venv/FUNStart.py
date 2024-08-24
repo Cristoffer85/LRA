@@ -4,7 +4,7 @@ from kivy.properties import StringProperty
 class FUNStart(Screen):
     # Properties to store selected dropdown values
     class_selection = StringProperty("2WD")
-    registrationtime_selection = StringProperty("2 min")
+    registrationtime_selection = StringProperty("1 min")
     heatlength_selection = StringProperty("5 min")
     warmup_selection = StringProperty("1 min")
 
