@@ -41,8 +41,7 @@ class FUNRegister(Screen):
             self.countdown_event = None  # Reset the countdown event
             self.countdown_time = 0
 
-        # Reset the countdown label text and hide it again
-        countdown_label.text = "Time Remaining: "
+        # Hide countdown label again when pressing the back button
         countdown_label.opacity = 0  # Hide the countdown label
 
         # Re-enable and show the Start Registration button

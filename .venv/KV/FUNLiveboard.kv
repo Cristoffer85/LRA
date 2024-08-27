@@ -8,8 +8,40 @@
 
         # Label at the top left
         Label:
-            text: "Live:"
+            text: "LIVE!"
             size_hint: (1, 0.1)
-            halign: 'left'
+            halign: 'center'
             valign: 'top'
             text_size: self.size
+
+        # BoxLayout to hold the GridLayout
+        BoxLayout:
+            id: table_layout
+            orientation: 'vertical'
+            canvas.before:
+                # Draw alternating background colors for rows
+                Color:
+                    rgba: 1, 1, 1, 1  # Default white color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 1, 1, 0, 0.2  # Yellow color
+                Rectangle:
+                    pos: (self.x, self.y + (self.height / 2) - ((self.height / 8) / 2)) if (self.height / 8) % 2 == 0 else self.pos
+                    size: (self.width, self.height / 8)
+
+            # Adding a GridLayout to table_layout
+            GridLayout:
+                id: grid_layout
+                cols: 8
+                rows: 8
+                spacing: 2
+                padding: 2
+
+                # Dummy cells for now
+                Label:
+                    text: "race data"
+                Label:
+                    text: "race data"
+                # Add more Labels or Widgets to populate the grid initially

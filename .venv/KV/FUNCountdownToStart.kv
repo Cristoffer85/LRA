@@ -17,9 +17,10 @@
         # Central message with white background
         BoxLayout:
             orientation: 'vertical'
-            size_hint: (1, 0.8)  # Make this layout take most of the vertical space
+            size_hint: (0.7, 0.4)  # Smaller layout
             padding: 20
             spacing: 10
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center the box
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1  # White background
@@ -28,10 +29,9 @@
                     size: self.size
 
             Label:
-                text: "Place your cars behind the startline"
-                font_size: '32sp'
+                text: "Place your cars behind the startline!"
+                font_size: '28sp'  # Smaller font size
                 color: 0, 0, 0, 1  # Black text color
-                size_hint: (1, 0.5)
                 halign: 'center'
                 valign: 'middle'
                 text_size: self.size
@@ -39,7 +39,7 @@
         # Countdown timer and buttons layout
         BoxLayout:
             orientation: 'vertical'
-            size_hint: (1, 0.2)
+            size_hint: (1, 0.5)
             padding: 20
 
             Label:
@@ -60,26 +60,16 @@
             orientation: 'horizontal'
             size_hint: (1, 0.1)
 
-            Button:
-                text: 'Back'
-                size_hint: None, None
-                size: '100dp', '50dp'
-                background_color: 0.8, 0.1, 0.1, 1
-                color: 1, 1, 1, 1
-                pos_hint: {'x': 0}
-                on_press: root.go_to_funwarmup()
-                opacity: 0  # Hide initially
-
             Widget:
                 size_hint_x: None
-                width: self.parent.width - 220  # Adjust width based on button sizes
+                width: self.parent.width - 200  # Adjust width based on button sizes
 
             Button:
                 id: next_button
-                text: 'Next'
+                text: 'Start Countdown'
                 size_hint: None, None
-                size: '100dp', '50dp'
-                background_color: 0.1, 0.8, 0.1, 1
+                size: '200dp', '50dp'
+                background_color: 0.5, 1, 0, 1 # Lime background
                 color: 1, 1, 1, 1
-                pos_hint: {'right': 1}
+                pos_hint: {'center_x': 0.5}  # Center the button horizontally
                 on_press: root.start_countdown(countdown_label, next_button)

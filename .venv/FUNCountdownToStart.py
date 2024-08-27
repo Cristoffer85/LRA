@@ -1,9 +1,27 @@
+import random
+import os
 from kivy.uix.screenmanager import Screen
 from kivy.clock import Clock
-from kivy.uix.button import Button  # Import Button class
+from kivy.uix.button import Button
+from kivy.core.audio import SoundLoader
 
 class FUNCountdownToStart(Screen):
     countdown_event = None  # Track the scheduled countdown event
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        sound_dir = os.path.join(os.path.dirname(__file__), 'sounds')
+        # Load the sound files from the sounds directory
+        self.sounds = {
+            10: SoundLoader.load(os.path.join(sound_dir, '10.wav')),
+            9: SoundLoader.load(os.path.join(sound_dir, '9.wav')),
+            8: SoundLoader.load(os.path.join(sound_dir, '8.wav')),
+            7: SoundLoader.load(os.path.join(sound_dir, '7.wav')),
+            6: SoundLoader.load(os.path.join(sound_dir, '6.wav')),
+            5: SoundLoader.load(os.path.join(sound_dir, '5.wav')),
+            4: SoundLoader.load(os.path.join(sound_dir, '4.wav')),
+            0: SoundLoader.load(os.path.join(sound_dir, 'race start.mp3'))
+        }
 
     def start_countdown(self, countdown_label, next_button):
         if self.countdown_event:  # If a countdown is already running, do nothing
@@ -23,19 +41,34 @@ class FUNCountdownToStart(Screen):
 
     def update_countdown(self, countdown_label):
         if self.countdown_time <= 0:
+            # If countdown is finished, play the start sound and transition
+            self.sounds[0].play()
             self.countdown_event.cancel()
             self.countdown_event = None
             self.go_to_funliveboard()
             return
 
-        # Update countdown label
-        countdown_label.text = f"{self.countdown_time:02d}"
+        # Update countdown label display
+        if self.countdown_time > 3:
+            countdown_label.text = f"{self.countdown_time:02d}"
+        else:
+            countdown_label.text = ""  # Hide the countdown label for numbers 3 to 0
+
+        # Play the appropriate sound for the current countdown time
+        if self.countdown_time in self.sounds:
+            self.sounds[self.countdown_time].play()
+
+        # Introduce a random delay for the start sound
+        if self.countdown_time == 3:
+            self.start_time = Clock.get_time()  # Record the current time
+            self.random_delay = random.uniform(0.1, 1.0)  # Random delay between 0.1 and 1.0 seconds
+            Clock.schedule_once(self.play_random_start_sound, self.random_delay)
+
         self.countdown_time -= 1
 
-    def go_to_funwarmup(self):
-        # Back to Funwarmup screen
-        self.manager.transition.direction = 'right'
-        self.manager.current = 'FUNWarmup'
+    def play_random_start_sound(self, dt):
+        self.sounds[0].play()  # Play the start sound
+        self.go_to_funliveboard()
 
     def go_to_funliveboard(self):
         # Next to FunLiveboard screen
