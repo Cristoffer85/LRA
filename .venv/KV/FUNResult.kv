@@ -3,30 +3,19 @@
 <FUNResult>:
     BoxLayout:
         orientation: 'vertical'
-        padding: 20
-        spacing: 10
-
-        # Label at the top left
         Label:
-            text: "Result:"
-            size_hint: (1, 0.1)
-            halign: 'left'
-            valign: 'top'
+            text: "Race Results"
+            font_size: '32sp'
+            color: 1, 1, 1, 1
+            size_hint: (1, 0.2)
+            halign: 'center'
+            valign: 'middle'
             text_size: self.size
 
 #------------ Bottom navigation buttons on the same row and separate corners -------------------------------------------#
         BoxLayout:
             orientation: 'horizontal'
             size_hint: (1, 0.2)
-
-            Button:
-                text: 'Back'
-                size_hint: None, None
-                size: '100dp', '50dp'
-                background_color: 0.8, 0.1, 0.1, 1
-                color: 1, 1, 1, 1
-                pos_hint: {'x': 0}
-                on_press: root.go_to_funliveboard()
 
             Widget:
                 size_hint_x: None
