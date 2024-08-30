@@ -5,6 +5,8 @@
     registrationtime_selection: registrationtime_spinner.text
     heatlength_selection: heatlength_spinner.text
     warmup_selection: warmup_spinner.text
+    shortest_laptime_selection: shortest_laptime_spinner.text
+    auto_start_after_warmup: auto_start_checkbox.active
 
     BoxLayout:
         orientation: 'vertical'
@@ -38,8 +40,9 @@
                 Spinner:
                     id: class_spinner
                     text: "2WD"  # Default value
-                    values: ["2WD", "4WD", "Tank", "Custom.."]
+                    values: root.classes
                     size_hint: (1, 0.6)
+                    on_text: root.on_class_selection(self, self.text) 
 
             BoxLayout:
                 orientation: 'vertical'
@@ -94,6 +97,40 @@
                     text: "1 min"  # Default value
                     values: ["1 min", "2 min", "3 min", "4 min"]
                     size_hint: (1, 0.6)
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                size_hint: (1, 1)
+
+                Label:
+                    text: "Shortest Laptime:"
+                    size_hint: (1, 0.4)
+                    halign: 'center'
+                    valign: 'bottom'
+                    text_size: self.size
+
+                Spinner:
+                    id: shortest_laptime_spinner
+                    text: "5 sec"  # Default value
+                    values: ["5 sec", "10 sec", "15 sec", "20 sec"] 
+                    size_hint: (1, 0.6)
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1, 0.2)
+
+            CheckBox:
+                id: auto_start_checkbox
+                size_hint: (0.1, 0.1)
+                active: root.auto_start_after_warmup  # Bind to the property
+
+            Label:
+                text: "Automatically start after warmup?"
+                size_hint: (0.9, 0.2)
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
 
         Widget:
             size_hint_y: None

@@ -6,11 +6,8 @@ class FUNLiveboard(Screen):
     heatlength_selection = StringProperty()
 
     def on_enter(self):
-        # Retrieve the heat length when entering the screen
         heat_length_minutes = int(self.manager.get_screen('FUNRegister').heatlength_selection.split()[0])
         self.heat_length_seconds = heat_length_minutes * 60  # Convert to seconds
-
-        # Start the countdown automatically
         self.start_countdown(self.ids.countdown_label)
 
     def start_countdown(self, countdown_label):
@@ -22,10 +19,10 @@ class FUNLiveboard(Screen):
         countdown_label.text = f"{minutes:02d}:{seconds:02d}"
         if self.countdown_time <= 0:
             self.countdown_event.cancel()
-            self.transition_to_funresult()  # Transition to FUNResult when the timer ends
+            self.transition_to_funresult()
         self.countdown_time -= 1
 
     def transition_to_funresult(self):
-        # Automatically transition to FUNResult without showing any button
+        # Automatically transition to FUNResult
         self.manager.transition.direction = 'left'
         self.manager.current = 'FUNResult'

@@ -61,7 +61,7 @@ class FUNCountdownToStart(Screen):
         # Introduce a random delay for the start sound
         if self.countdown_time == 3:
             self.start_time = Clock.get_time()  # Record the current time
-            self.random_delay = random.uniform(0.1, 1.0)  # Random delay between 0.1 and 1.0 seconds
+            self.random_delay = random.uniform(1.0, 4.0)  # Random delay between 1 and 4 seconds
             Clock.schedule_once(self.play_random_start_sound, self.random_delay)
 
         self.countdown_time -= 1

@@ -1,12 +1,14 @@
 from kivy.uix.screenmanager import Screen
 from kivy.clock import Clock
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty
 
 class FUNRegister(Screen):
     class_selection = StringProperty()
     registrationtime_selection = StringProperty()
     heatlength_selection = StringProperty()
     warmup_selection = StringProperty()
+    shortest_laptime_selection = StringProperty()
+    auto_start_after_warmup = BooleanProperty(False)
 
     countdown_event = None  # Track the scheduled countdown event
 
@@ -14,7 +16,7 @@ class FUNRegister(Screen):
         if self.countdown_event:  # If a countdown is already running, do nothing
             return
 
-        # Hide and disable the Start Registration button
+        # Hide and disable the Start Registration button after pressing it
         start_button.disabled = True
         start_button.opacity = 0
 
@@ -56,6 +58,6 @@ class FUNRegister(Screen):
         self.manager.current = 'FUNStart'
 
     def go_to_funwarmup(self):
-        # Transition to the FunWarmup screen
+        # Navigate to FunWarmup
         self.manager.transition.direction = 'left'
         self.manager.current = 'FUNWarmup'

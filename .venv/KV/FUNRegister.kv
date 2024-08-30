@@ -28,15 +28,16 @@
 #------------ Race setup details -------------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
-            spacing: 3
-            size_hint: (0.4, 0.3)
+            spacing: 1
+            size_hint: (0.4, 0.5)
             pos_hint: {'right': 1}
 
+    # --------- Class selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
                 height: '30dp'
-                padding: [10, 5]
+                padding: [2, 2]
 
                 canvas.before:
                     Color:
@@ -52,9 +53,10 @@
                     valign: 'middle'
                     halign: 'left'
 
+        # Separator line
             BoxLayout:
                 size_hint_y: None
-                height: '1dp'  # Thinner separator
+                height: '1dp'
                 canvas.before:
                     Color:
                         rgba: 0, 0, 0, 1  # Black background
@@ -62,11 +64,12 @@
                         pos: self.pos
                         size: self.size
 
+    # --------- Registration time selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
                 height: '30dp'
-                padding: [10, 5]
+                padding: [2, 2]
 
                 canvas.before:
                     Color:
@@ -82,6 +85,7 @@
                     valign: 'middle'
                     halign: 'left'
 
+        # Separator line
             BoxLayout:
                 size_hint_y: None
                 height: '1dp'
@@ -92,11 +96,12 @@
                         pos: self.pos
                         size: self.size
 
+    # --------- Heat length selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
                 height: '30dp'
-                padding: [10, 5]
+                padding: [2, 2]
 
                 canvas.before:
                     Color:
@@ -112,6 +117,7 @@
                     valign: 'middle'
                     halign: 'left'
 
+        # Separator line
             BoxLayout:
                 size_hint_y: None
                 height: '1dp'
@@ -122,11 +128,12 @@
                         pos: self.pos
                         size: self.size
 
+    # --------- Warmup selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
                 height: '30dp'
-                padding: [10, 5]
+                padding: [2, 2]
 
                 canvas.before:
                     Color:
@@ -141,6 +148,74 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+
+        # Separator line
+            BoxLayout:
+                size_hint_y: None
+                height: '1dp'  # Thinner separator
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Black background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+    # --------- Shortest laptime selection -------------
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '30dp'
+                padding: [2, 2]
+
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Shortest Laptime: " + root.shortest_laptime_selection
+                    color: 0, 0, 0, 1  # Black text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+        # Separator line
+            BoxLayout:
+                size_hint_y: None
+                height: '1dp'
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Black background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+    # --------- Auto start after warmup selection -------------
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '30dp'
+                padding: [10, 5]
+
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: "Automatically Start After Warmup: " + ("Yes" if root.auto_start_after_warmup else "No")
+                    color: 0, 0, 0, 1  # Black text
+                    text_size: self.size
+                    valign: 'middle'
+                    halign: 'left'
+
+
+
+
 #------------ Driver details -------------------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
