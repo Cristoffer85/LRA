@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
+from kivy.properties import BooleanProperty
 
 class FUNCountdownToStart(Screen):
     countdown_event = None  # Track the scheduled countdown event
@@ -23,12 +24,24 @@ class FUNCountdownToStart(Screen):
             0: SoundLoader.load(os.path.join(sound_dir, 'race start.mp3'))
         }
 
+    def on_pre_enter(self, *args):
+        # Check the state of the checkbox when entering the screen
+        auto_start = self.manager.get_screen('FUNStart').auto_start_after_warmup
+        if auto_start:
+            # Start countdown automatically if checkbox is checked
+            self.start_countdown(self.ids.countdown_label, self.ids.next_button)
+        else:
+            # Show the Start Countdown button if checkbox is unchecked
+            self.ids.next_button.opacity = 1
+
     def start_countdown(self, countdown_label, next_button):
         if self.countdown_event:  # If a countdown is already running, do nothing
             return
 
-        # Hide all other buttons
+        # Hide the Start Countdown button if automatically starting
         next_button.opacity = 0
+
+        # Hide all other buttons
         for widget in self.children:
             if isinstance(widget, Button) and widget != next_button:
                 widget.opacity = 0

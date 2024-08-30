@@ -43,6 +43,7 @@ class FUNStart(Screen):
         popup = Popup(title="Add New Class", content=content, size_hint=(0.8, 0.5))
         popup.open()
 
+# -------- Save and load classes to/from a .json file --------
     def save_classes(self):
         with open("classes.json", "w") as f:
             json.dump(self.classes[:-1], f)  # Save all except "+ Add new class"
@@ -52,6 +53,7 @@ class FUNStart(Screen):
             with open("classes.json", "r") as f:
                 saved_classes = json.load(f)
                 self.classes = saved_classes + ["+ Add new class"]
+# -----------------------------------------------------
 
     def go_to_index(self):
         # Navigate back logic
