@@ -6,13 +6,28 @@
         padding: 20
         spacing: 10
 
-        # Label at the top left
-        Label:
-            text: "Countdown before start!"
+        # Top section with Home button in the top right
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
             size_hint: (1, 0.1)
-            halign: 'left'
+
+            Button:
+                size_hint: None, None
+                size: '20dp', '20dp'
+                background_normal: 'images/home.png'  # Path to your image
+                background_down: 'images/home.png'  # Optional, if you want a different image when the button is pressed
+                border: [0, 0, 0, 0]  # Removes the default button border
+                on_press: root.go_to_home()
+
+        Label:
+            text: "COUNTDOWN START!"
+            size_hint: (1, 0.1)
+            halign: 'center'
             valign: 'top'
             text_size: self.size
+            color: 1, 1, 1, 1 # White text color
+            font_size: '24sp'
 
         # Central message with white background
         BoxLayout:

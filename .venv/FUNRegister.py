@@ -34,6 +34,7 @@ class FUNRegister(Screen):
         if self.countdown_time <= 0:
             self.countdown_event.cancel()
             self.countdown_event = None
+            self.reset_countdown(countdown_label, self.ids.start_button)  # Reset before transitioning
             self.go_to_funwarmup()
         self.countdown_time -= 1
 
@@ -58,6 +59,9 @@ class FUNRegister(Screen):
         self.manager.current = 'FUNStart'
 
     def go_to_funwarmup(self):
+        countdown_label = self.ids.countdown_label
+        start_button = self.ids.start_button
+        self.reset_countdown(countdown_label, start_button)  # Ensure reset happens before transition
         # Navigate to FunWarmup
         self.manager.transition.direction = 'left'
         self.manager.current = 'FUNWarmup'

@@ -4,39 +4,29 @@
     BoxLayout:
         orientation: 'vertical'
         padding: 20
-        spacing: 20
+        spacing: 15
+    #------------ Top label ---------------------------------------------------------------------------------------------#
+        Label:
+            text: "SUMMARY:"
+            size_hint: (1, 0.1)
+            halign: 'left'
+            valign: 'top'
+            text_size: self.size
+            color: 1, 1, 1, 1 # White text color
+            font_size: '20sp'
 
-#------------ Top label ---------------------------------------------------------------------------------------------#
-        BoxLayout:
-            size_hint: (0.2, 0.1)
-            padding: [10, 10]
-            pos_hint: {'x': 0}
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 1  # White background color
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-
-            Label:
-                text: "Summary:"
-                color: 0, 0, 0, 1  # Black text color
-                halign: 'left'
-                valign: 'middle'
-                text_size: self.size
-
-#------------ Race setup details -------------------------------------------------------------------------------------#
+    #------------ Race setup details -------------------------------------------------------------------------------------#
         GridLayout:
-            cols: 1
-            spacing: 1
-            size_hint: (0.4, 0.5)
+            cols: 2
+            spacing: 5
+            size_hint: (0.8, 0.6)
             pos_hint: {'right': 1}
 
-    # --------- Class selection -------------
+        # --------- Class selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '30dp'
+                height: '25dp'  # Reduced height
                 padding: [2, 2]
 
                 canvas.before:
@@ -52,23 +42,13 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Reduced font size
 
-        # Separator line
-            BoxLayout:
-                size_hint_y: None
-                height: '1dp'
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1  # Black background
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-    # --------- Registration time selection -------------
+        # --------- Registration time selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '30dp'
+                height: '25dp'
                 padding: [2, 2]
 
                 canvas.before:
@@ -84,23 +64,13 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Reduced font size
 
-        # Separator line
-            BoxLayout:
-                size_hint_y: None
-                height: '1dp'
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1  # Black background
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-    # --------- Heat length selection -------------
+        # --------- Heat length selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '30dp'
+                height: '25dp'
                 padding: [2, 2]
 
                 canvas.before:
@@ -116,23 +86,13 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Reduced font size
 
-        # Separator line
-            BoxLayout:
-                size_hint_y: None
-                height: '1dp'
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1  # Black background
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-    # --------- Warmup selection -------------
+        # --------- Warmup selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '30dp'
+                height: '25dp'
                 padding: [2, 2]
 
                 canvas.before:
@@ -148,23 +108,13 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Reduced font size
 
-        # Separator line
-            BoxLayout:
-                size_hint_y: None
-                height: '1dp'  # Thinner separator
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1  # Black background
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-    # --------- Shortest laptime selection -------------
+        # --------- Shortest laptime selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '30dp'
+                height: '25dp'
                 padding: [2, 2]
 
                 canvas.before:
@@ -180,24 +130,14 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Reduced font size
 
-        # Separator line
-            BoxLayout:
-                size_hint_y: None
-                height: '1dp'
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1  # Black background
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-    # --------- Auto start after warmup selection -------------
+        # --------- Auto start after warmup selection -------------
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '30dp'
-                padding: [10, 5]
+                height: '25dp'
+                padding: [2, 2]
 
                 canvas.before:
                     Color:
@@ -212,17 +152,15 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Reduced font size
 
-
-
-
-#------------ Driver details -------------------------------------------------------------------------------------------#
+    #------------ Driver details -------------------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
             spacing: 5
             size_hint: (1, 0.4)
 
-    #------------ Driver 1 details ---------------------------------------------------------------------------------------#
+        #------------ Driver 1 details ---------------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -235,14 +173,16 @@
                     Rectangle:
                         pos: self.pos
                         size: self.size
+
                 Label:
                     text: "Driver 1: "
                     color: 1, 1, 1, 1  # White text
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Adjusted font size
 
-    #------------ Driver 2 details ---------------------------------------------------------------------------------------#
+        #------------ Driver 2 details ---------------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -255,14 +195,16 @@
                     Rectangle:
                         pos: self.pos
                         size: self.size
+
                 Label:
                     text: "Driver 2: "
                     color: 1, 1, 1, 1  # White text
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Adjusted font size
 
-    #------------ Driver 3 details ---------------------------------------------------------------------------------------#
+        #------------ Driver 3 details ---------------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -282,8 +224,9 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Adjusted font size
 
-    #------------ Driver 4 details ---------------------------------------------------------------------------------------#
+        #------------ Driver 4 details ---------------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -303,16 +246,16 @@
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
+                    font_size: '16sp'  # Adjusted font size
 
 #------------ Countdown Timer, initially invisible ------------------------------------------------------------------------------------------#
         Label:
             id: countdown_label
             text: "Drive participating cars past startline!"
-            font_size: '24sp'
+            font_size: '20sp'  # Reduced font size
             color: 1, 1, 1, 1  # White text color
             size_hint_y: None
             height: '50dp'
-            # Make sure the timer label is visible by default
             opacity: 0
 
         BoxLayout:

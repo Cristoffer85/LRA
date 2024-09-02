@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import Screen
 from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
-from kivy.properties import BooleanProperty
 
 class FUNCountdownToStart(Screen):
     countdown_event = None  # Track the scheduled countdown event
@@ -87,3 +86,8 @@ class FUNCountdownToStart(Screen):
         # Next to FunLiveboard screen
         self.manager.transition.direction = 'left'
         self.manager.current = 'FUNLiveboard'
+
+    def go_to_home(self):
+        # Navigate to the home screen
+        self.manager.transition.direction = 'down'
+        self.manager.current = 'Index'
