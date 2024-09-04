@@ -5,12 +5,22 @@ from kivy.core.audio import SoundLoader
 
 class FUNLiveboard(Screen):
     heatlength_selection = StringProperty()
-    end_sound = None  # Placeholder for the sound object
+    class_selection = StringProperty()
+
+    end_sound = None
 
     def on_enter(self):
-        heat_length_minutes = int(self.manager.get_screen('FUNRegister').heatlength_selection.split()[0])
+        # Retrieve the FUNRegister screen
+        fun_register_screen = self.manager.get_screen('FUNRegister')
+        
+        # Retrieve and display the heat length selection
+        heat_length_minutes = int(fun_register_screen.heatlength_selection.split()[0])
         self.heat_length_seconds = heat_length_minutes * 60  # Convert to seconds
         self.start_countdown(self.ids.countdown_label)
+
+        # Retrieve and display the class selection
+        self.class_selection = fun_register_screen.class_selection
+        self.ids.class_label.text = f"Class: {self.class_selection}"
 
         # Load the sound file when the screen is entered
         self.end_sound = SoundLoader.load('sounds/race end.mp3')

@@ -20,6 +20,7 @@
                 border: [0, 0, 0, 0]  # Removes the default button border
                 on_press: root.go_to_home()
 
+        # Countdown Label
         Label:
             id: countdown_label
             text: "00:00"
@@ -31,13 +32,23 @@
             halign: 'center'
             text_size: self.size
 
-#------------ Driver details -------------------------------------------------------------------------------------------#
+        # Class Selection Label
+        Label:
+            id: class_label
+            text: "Class: Not Selected"
+            font_size: '24sp'
+            color: 1, 1, 1, 1  # White text
+            size_hint: (1, 0.1)
+            valign: 'top'
+            halign: 'center'
+
+        # Driver details section
         GridLayout:
             cols: 1
             spacing: 5
             size_hint: (1, 0.4)
 
-    #------------ Driver 1 details ---------------------------------------------------------------------------------------#
+            # Driver 1 details
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -57,7 +68,7 @@
                     valign: 'middle'
                     halign: 'left'
 
-    #------------ Driver 2 details ---------------------------------------------------------------------------------------#
+            # Driver 2 details
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -77,7 +88,7 @@
                     valign: 'middle'
                     halign: 'left'
 
-    #------------ Driver 3 details ---------------------------------------------------------------------------------------#
+            # Driver 3 details
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -98,7 +109,7 @@
                     valign: 'middle'
                     halign: 'left'
 
-    #------------ Driver 4 details ---------------------------------------------------------------------------------------#
+            # Driver 4 details
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None

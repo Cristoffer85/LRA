@@ -9,17 +9,19 @@ import os
 
 class FUNStart(Screen):
     # Properties to store selected dropdown values
-    class_selection = StringProperty("2WD")
-    registrationtime_selection = StringProperty("1 min")
-    heatlength_selection = StringProperty("5 min")
-    warmup_selection = StringProperty("1 min")
-    classes = ListProperty(["FWD", "Touring Justock", "Touring mod", "Super touring", "Touring 13.5T", "1/12 MOD", "1/12 STOCK", "Tank", "+ Add new class"])
+    class_selection = StringProperty()
+    registrationtime_selection = StringProperty()
+    heatlength_selection = StringProperty()
+    shortest_laptime_selection = StringProperty()
+    warmup_selection = StringProperty()
+    classes = ListProperty([])
     auto_start_after_warmup = BooleanProperty(False)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.load_classes()
 
+# ------------------------------ Add new class Popup------------------------------
     def on_class_selection(self, instance, value):
         if value == "+ Add new class":
             self.show_add_class_popup()
