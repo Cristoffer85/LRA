@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-from kivy.properties import StringProperty, ListProperty, BooleanProperty
+from kivy.properties import ListProperty
 from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
@@ -8,19 +8,12 @@ import json
 import os
 
 class FUNStart(Screen):
-    # Properties to store selected dropdown values
-    class_selection = StringProperty()
-    registrationtime_selection = StringProperty()
-    heatlength_selection = StringProperty()
-    shortest_laptime_selection = StringProperty()
-    warmup_selection = StringProperty()
+# ------------------------------ Property for saving new class ------------------------------
     classes = ListProperty([])
-    auto_start_after_warmup = BooleanProperty(False)
-
+# ------------------------------ Initialisation + load new classes on start ------------------------------
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.load_classes()
-
 # ------------------------------ Add new class Popup------------------------------
     def on_class_selection(self, instance, value):
         if value == "+ Add new class":
@@ -44,7 +37,6 @@ class FUNStart(Screen):
 
         popup = Popup(title="Add New Class", content=content, size_hint=(0.8, 0.5))
         popup.open()
-
 # ------------------------------ Save and load classes to/from a local .json file ------------------------------
     def save_classes(self):
         with open("classes.json", "w") as f:
@@ -55,7 +47,6 @@ class FUNStart(Screen):
             with open("classes.json", "r") as f:
                 saved_classes = json.load(f)
                 self.classes = saved_classes + ["+ Add new class"]
-
 # ------------------------------ Navigation ------------------------------
     # Forward, to FUNStart
     def go_to_funregister(self):
@@ -69,7 +60,6 @@ class FUNStart(Screen):
 
         self.manager.transition.direction = 'left'
         self.manager.current = 'FUNRegister'
-    
     # Backward, to index
     def go_to_index(self):
         self.manager.transition.direction = 'right'

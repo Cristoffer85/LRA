@@ -1,52 +1,56 @@
 #:kivy 2.3.0
 
 <FUNLiveboard>:
-    BoxLayout:
+    FloatLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
 
-        # Top section with Home button in the top right
-        AnchorLayout:
-            anchor_x: 'right'
-            anchor_y: 'top'
-            size_hint: (1, 0.1)
+        # Top section with class selection, countdown, and home button
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '50dp'
+            spacing: 10
+            pos_hint: {"top": 1}
 
+            # Class Selection Label (Left)
+            Label:
+                id: class_label
+                text: "Class: Not Selected"
+                font_size: '24sp'
+                color: 1, 1, 1, 1  # White text
+                size_hint_x: None
+                width: '200dp'  # Adjust width as needed
+                valign: 'middle'
+                halign: 'left'
+            
+            # Countdown Label (Center)
+            Label:
+                id: countdown_label
+                text: "00:00"
+                font_size: '48sp'
+                color: 1, 1, 1, 1  # White text
+                size_hint_x: 1
+                halign: 'center'
+                text_size: self.size
+
+            # Home Button (Right)
             Button:
                 size_hint: None, None
                 size: '20dp', '20dp'
-                background_normal: 'images/home.png'  # Path to your image
-                background_down: 'images/home.png'  # Optional, if you want a different image when the button is pressed
-                border: [0, 0, 0, 0]  # Removes the default button border
+                background_normal: 'images/home.png'
+                background_down: 'images/home.png'
+                border: [0, 0, 0, 0]
                 on_press: root.go_to_home()
-
-        # Countdown Label
-        Label:
-            id: countdown_label
-            text: "00:00"
-            font_size: '48sp'
-            color: 1, 1, 1, 1  # White text
-            bold: True
-            size_hint: (1, 0.8)
-            valign: 'top'
-            halign: 'center'
-            text_size: self.size
-
-        # Class Selection Label
-        Label:
-            id: class_label
-            text: "Class: Not Selected"
-            font_size: '24sp'
-            color: 1, 1, 1, 1  # White text
-            size_hint: (1, 0.1)
-            valign: 'top'
-            halign: 'center'
 
         # Driver details section
         GridLayout:
             cols: 1
             spacing: 5
-            size_hint: (1, 0.4)
+            size_hint_y: 1
+            pos_hint: {"top": 0.9}  # Adjust this value to position below the top section
+            padding: [0, 60, 0, 0]  # Adjust padding to provide space for the top section
 
             # Driver 1 details
             BoxLayout:
@@ -54,16 +58,15 @@
                 size_hint_y: None
                 height: '30dp'
                 padding: [10, 5]
-
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 0, 1  # Light grey background
+                        rgba: 0, 0, 0, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
                 Label:
                     text: "Driver 1: "
-                    color: 1, 1, 1, 1  # White text
+                    color: 1, 1, 1, 1
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
@@ -74,16 +77,15 @@
                 size_hint_y: None
                 height: '30dp'
                 padding: [10, 5]
-
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 0, 1  # Light grey background
+                        rgba: 0, 0, 0, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
                 Label:
                     text: "Driver 2: "
-                    color: 1, 1, 1, 1  # White text
+                    color: 1, 1, 1, 1
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
@@ -94,17 +96,15 @@
                 size_hint_y: None
                 height: '30dp'
                 padding: [10, 5]
-
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 0, 1  # Light grey background
+                        rgba: 0, 0, 0, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
-
                 Label:
                     text: "Driver 3: "
-                    color: 1, 1, 1, 1  # White text
+                    color: 1, 1, 1, 1
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'
@@ -115,17 +115,15 @@
                 size_hint_y: None
                 height: '30dp'
                 padding: [10, 5]
-
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 0, 1  # Light grey background
+                        rgba: 0, 0, 0, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
-
                 Label:
                     text: "Driver 4: "
-                    color: 1, 1, 1, 1  # White text
+                    color: 1, 1, 1, 1
                     text_size: self.size
                     valign: 'middle'
                     halign: 'left'

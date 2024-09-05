@@ -11,10 +11,6 @@ class index(Screen):
 
 
 
-
-
-
-
 # ------------------------------ Navigation ------------------------------
     # Forward, to FUNStart
     def go_to_funstart(self): 
