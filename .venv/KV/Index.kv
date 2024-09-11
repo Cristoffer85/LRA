@@ -2,7 +2,6 @@
 
 <Index>:
     FloatLayout:
-
 #--- Centered Label box at the top --------------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
@@ -14,7 +13,6 @@
                 text: 'Welcome to Latera! Make a selection below:'
                 bold: True
                 halign: 'center'
-
 #--- Layout for below columns -------------------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
@@ -22,13 +20,12 @@
             size: '700dp', '400dp'
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-    ################################### Top row for column labels ###################################
+    ################################### Top row for column labels ##########################################
             BoxLayout:
                 orientation: 'horizontal'
                 size_hint_y: None
                 height: '50dp'
                 spacing: 10
-
                 # //////////////////////////// Solo Racing \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                 MyLabel:
                     text: 'Solo Racing'
@@ -49,7 +46,6 @@
                 orientation: 'horizontal'
                 size_hint_y: 1
                 spacing: 10
-
                 # //////////////////////////// Left column \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                 BoxLayout:
                     orientation: 'vertical'
@@ -89,5 +85,3 @@
                         font_size: '40sp'                                   # Text size
                         pos_hint: {'center_x': 0.5}
                         on_press: root.go_to_funstart()
-
-#-----------------------------------------------------------------------------------------------------------------------#

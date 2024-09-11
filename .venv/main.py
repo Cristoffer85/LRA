@@ -10,13 +10,13 @@ from FUNCountdownToStart import FUNCountdownToStart
 from screen_manager import MyScreenManager
 
 # Load the kv files for each screen
-Builder.load_file('KV/GLOBAL.kv')
-Builder.load_file('KV/index.kv')
-Builder.load_file('KV/FUNStart.kv')
-Builder.load_file('KV/FUNRegister.kv')
-Builder.load_file('KV/FUNWarmup.kv')
-Builder.load_file('KV/FUNCountdownToStart.kv')
-Builder.load_file('KV/FUNLiveboard.kv')
+Builder.load_file('KV/GLOBAL.kv') # done
+Builder.load_file('KV/index.kv') # done
+Builder.load_file('KV/FUNStart.kv') # done
+Builder.load_file('KV/FUNRegister.kv') # done
+Builder.load_file('KV/FUNWarmup.kv') # done
+Builder.load_file('KV/FUNCountdownToStart.kv') # done
+Builder.load_file('KV/FUNLiveboard.kv') # "done" (sort of, some small spacing left) and some comments left
 Builder.load_file('KV/FUNResult.kv')
 
 class LateraRaceTracer(App):

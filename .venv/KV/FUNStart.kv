@@ -8,12 +8,12 @@
     warmup_selection: warmup_spinner.text
     shortest_laptime_selection: shortest_laptime_spinner.text
     auto_start_after_warmup: auto_start_checkbox.active
-#------------ Layout for FUNStart --------------------------------------------------------------------------------------#
+#------------ Total Layout ---------------------------------------------------------------------------------------------#
     BoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
-        #------------ Top label ----------------------------------------------------------------------------------------#
+    #------------ Top label ----------------------------------------------------------------------------------------#
         Label:
             text: "RACE SETUP:"
             bold: True
@@ -23,7 +23,7 @@
             text_size: self.size
             color: 1, 1, 1, 1 # White text color
             font_size: '24sp'
-        #------------ Setup dropdowns------------- ---------------------------------------------------------------------#
+    #------------ Setup dropdowns------------- ---------------------------------------------------------------------#
         BoxLayout:
             orientation: 'horizontal'
             spacing: 10
@@ -119,7 +119,7 @@
                     text: "5 sec"  # Default value
                     values: ["5 sec", "10 sec", "15 sec", "20 sec"] 
                     size_hint: (1, 0.6)
-        #------------ Setup checkbox Autostart after warmup ------------------------------------------------------------#
+    #------------ Setup checkbox Autostart after warmup ------------------------------------------------------------#
         BoxLayout:
             orientation: 'horizontal'
             size_hint: (1, 0.2)

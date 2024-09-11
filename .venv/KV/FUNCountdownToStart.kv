@@ -1,27 +1,27 @@
 #:kivy 2.0.3
 
 <FUNCountdownToStart>:
+#------------ Layout for FUNStart --------------------------------------------------------------------------------------#
     BoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
-
-        # Top section with Home button in the top right
+    #------------ Top row ----------------------------------------------------------------------------------------------#
         AnchorLayout:
             anchor_x: 'right'
             anchor_y: 'top'
             size_hint: (1, 0.1)
-
+            # Home button in the top right
             Button:
                 size_hint: None, None
                 size: '30dp', '30dp'
-                background_normal: 'images/home.png'  # Path to your image
-                background_down: 'images/home.png'  # Optional, if you want a different image when the button is pressed
-                border: [0, 0, 0, 0]  # Removes the default button border
+                background_normal: 'images/home.png'
+                border: [0, 0, 0, 0]
                 on_press: root.go_to_home()
-
+        # Top label
         Label:
             text: "COUNTDOWN START!"
+            bold: True
             size_hint: (1, 0.1)
             halign: 'center'
             valign: 'top'
@@ -29,13 +29,13 @@
             color: 1, 1, 1, 1 # White text color
             font_size: '24sp'
 
-        # Central message with white background
+    #------------ Middle label (Place cars behind startline) -----------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
-            size_hint: (0.7, 0.4)  # Smaller layout
+            size_hint: (0.7, 0.4)
             padding: 20
             spacing: 10
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center the box
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1  # White background
@@ -45,13 +45,13 @@
 
             Label:
                 text: "Place your cars behind the startline!"
-                font_size: '28sp'  # Smaller font size
+                font_size: '28sp' 
                 color: 0, 0, 0, 1  # Black text color
                 halign: 'center'
                 valign: 'middle'
                 text_size: self.size
 
-        # Countdown timer and buttons layout
+    #------------ Countdown --------------------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
             size_hint: (1, 0.5)
@@ -67,24 +67,21 @@
                 valign: 'middle'
                 text_size: self.size
 
-            Widget:  # Placeholder for spacing, can be removed if needed
+            Widget:
                 size_hint: (1, 0.5)
 
-        # Bottom navigation buttons on the same row and separate corners
-        BoxLayout:
-            orientation: 'horizontal'
+    #------------ Navigation -------------------------------------------------------------------------------------------#
+        FloatLayout:
             size_hint: (1, 0.1)
-
-            Widget:
-                size_hint_x: None
-                width: self.parent.width - 200  # Adjust width based on button sizes
 
             Button:
                 id: next_button
-                text: 'Start Countdown'
+                text: 'START Countdown'
+                bold: True
+                font_size: '20sp'
                 size_hint: None, None
                 size: '200dp', '50dp'
-                background_color: 0.5, 1, 0, 1 # Lime background
+                background_color: 0.5, 1, 0, 1  # Lime background
                 color: 1, 1, 1, 1
-                pos_hint: {'center_x': 0.5}  # Center the button horizontally
+                pos_hint: {'center_x': 0.5, 'y': 0}
                 on_press: root.start_countdown(countdown_label, next_button)

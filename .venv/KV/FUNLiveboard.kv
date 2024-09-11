@@ -2,17 +2,13 @@
 
 <FUNLiveboard>:
     FloatLayout:
-        orientation: 'vertical'
         padding: 20
         spacing: 10
 
         # Top section with class selection, countdown, and home button
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: '50dp'
-            spacing: 10
-            pos_hint: {"top": 1}
+        FloatLayout:
+            size_hint: (1, 0.1)
+            pos_hint: {'top': 1}
 
             # Class Selection Label (Left)
             Label:
@@ -20,37 +16,40 @@
                 text: "Class: Not Selected"
                 font_size: '24sp'
                 color: 1, 1, 1, 1  # White text
-                size_hint_x: None
-                width: '200dp'  # Adjust width as needed
+                size_hint: None, None
+                size: '200dp', '50dp'
+                pos_hint: {'x': 0, 'y': 0}
                 valign: 'middle'
                 halign: 'left'
-            
+
             # Countdown Label (Center)
             Label:
                 id: countdown_label
                 text: "00:00"
                 font_size: '48sp'
                 color: 1, 1, 1, 1  # White text
-                size_hint_x: 1
+                size_hint: None, None
+                size: '200dp', '50dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 halign: 'center'
                 text_size: self.size
 
             # Home Button (Right)
             Button:
                 size_hint: None, None
-                size: '20dp', '40dp'
+                size: '30dp', '30dp'
                 background_normal: 'images/home.png'
-                background_down: 'images/home.png'
                 border: [0, 0, 0, 0]
+                pos_hint: {'right': 0.95, 'center_y': 0.5}  # Adjusted for right spacing and vertical centering
                 on_press: root.go_to_home()
 
         # Driver details section
         GridLayout:
             cols: 1
             spacing: 5
-            size_hint_y: 1
-            pos_hint: {"top": 0.9}  # Adjust this value to position below the top section
-            padding: [0, 60, 0, 0]  # Adjust padding to provide space for the top section
+            size_hint: (1, 0.9)
+            pos_hint: {"top": 0.9}
+            padding: [0, 10, 0, 0]
 
             # Driver 1 details
             BoxLayout:
