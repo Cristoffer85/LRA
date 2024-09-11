@@ -1,32 +1,34 @@
 #:kivy 2.3.0
 
 <FUNStart>:
+#------------ Properties (Background) in order to bind the dropdowns and checkbox to the values in the .py file --------#
     class_selection: class_spinner.text
     registrationtime_selection: registrationtime_spinner.text
     heatlength_selection: heatlength_spinner.text
     warmup_selection: warmup_spinner.text
     shortest_laptime_selection: shortest_laptime_spinner.text
     auto_start_after_warmup: auto_start_checkbox.active
-
+#------------ Layout for FUNStart --------------------------------------------------------------------------------------#
     BoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
-
+        #------------ Top label ----------------------------------------------------------------------------------------#
         Label:
             text: "RACE SETUP:"
+            bold: True
             size_hint: (1, 0.1)
             halign: 'left'
             valign: 'top'
             text_size: self.size
             color: 1, 1, 1, 1 # White text color
             font_size: '24sp'
-
+        #------------ Setup dropdowns------------- ---------------------------------------------------------------------#
         BoxLayout:
             orientation: 'horizontal'
             spacing: 10
             size_hint: (1, 0.2)
-
+            #------------ Class dropdown -----------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 spacing: 5
@@ -45,7 +47,7 @@
                     values: root.classes
                     size_hint: (1, 0.6)
                     on_text: root.on_class_selection(self, self.text) 
-
+            #------------ Registrationtime dropdown ------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 spacing: 5
@@ -63,7 +65,7 @@
                     text: "1 min"  # Default value
                     values: ["1 min", "2 min", "3 min", "4 min"]
                     size_hint: (1, 0.6)
-
+            #------------ Heatlength dropdown ------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 spacing: 5
@@ -81,7 +83,7 @@
                     text: "5 min"  # Default value
                     values: ["5 min", "10 min", "15 min", "20 min"]
                     size_hint: (1, 0.6)
-
+            #------------ Warmup dropdown ----------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 spacing: 5
@@ -99,7 +101,7 @@
                     text: "1 min"  # Default value
                     values: ["1 min", "2 min", "3 min", "4 min"]
                     size_hint: (1, 0.6)
-
+            #------------ Shortest laptime dropdown ------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 spacing: 5
@@ -117,7 +119,7 @@
                     text: "5 sec"  # Default value
                     values: ["5 sec", "10 sec", "15 sec", "20 sec"] 
                     size_hint: (1, 0.6)
-
+        #------------ Setup checkbox Autostart after warmup ------------------------------------------------------------#
         BoxLayout:
             orientation: 'horizontal'
             size_hint: (1, 0.2)
@@ -125,7 +127,7 @@
             CheckBox:
                 id: auto_start_checkbox
                 size_hint: (0.1, 0.1)
-                active: root.auto_start_after_warmup 
+                active: root.auto_start_after_warmup
 
             Label:
                 text: "Automatically start after warmup?"
@@ -137,29 +139,28 @@
         Widget:
             size_hint_y: None
             height: '200dp'
-
-        BoxLayout:
-            orientation: 'horizontal'
+    #------------ Navigation -------------------------------------------------------------------------------------------#
+        FloatLayout:
             size_hint: (1, 0.2)
-
+            # Back, to index
             Button:
+                text: 'BACK'
+                bold: True
+                font_size: '20sp'
                 size_hint: None, None
-                size: '60dp', '40dp'
-                background_normal: 'images/arrowback.png'
-                background_down: 'images/arrowback.png'
-                border: [0, 0, 0, 0]
-                pos_hint: {'x': 0}
+                size: '100dp', '50dp'
+                background_color: 0.8, 0.1, 0.1, 1
+                color: 1, 1, 1, 1
+                pos_hint: {'x': 0, 'y': 0}
                 on_press: root.go_to_index()
-
-            Widget:
-                size_hint_x: None
-                width: self.parent.width - 220
-
+            # Forward, to FUNRegister
             Button:
-                text: 'Next'
+                text: 'NEXT'
+                bold: True
+                font_size: '20sp'
                 size_hint: None, None
                 size: '100dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
-                pos_hint: {'right': 1}
+                pos_hint: {'right': 1, 'y': 0}  # pos_hint for align bottom right corner. Somehow this 'right' (differing from the back 'x') is the best option for making the button following along responsively, other than putting an 'x': 0.87 etc.
                 on_press: root.go_to_funregister()

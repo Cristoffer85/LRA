@@ -48,6 +48,11 @@ class FUNStart(Screen):
                 saved_classes = json.load(f)
                 self.classes = saved_classes + ["+ Add new class"]
 # ------------------------------ Navigation ------------------------------
+        # Backward, to index
+    def go_to_index(self):
+        self.manager.transition.direction = 'right'
+        self.manager.current = 'index'
+    
     # Forward, to FUNStart
     def go_to_funregister(self):
         funregister_screen = self.manager.get_screen('FUNRegister')
@@ -60,7 +65,3 @@ class FUNStart(Screen):
 
         self.manager.transition.direction = 'left'
         self.manager.current = 'FUNRegister'
-    # Backward, to index
-    def go_to_index(self):
-        self.manager.transition.direction = 'right'
-        self.manager.current = 'index'

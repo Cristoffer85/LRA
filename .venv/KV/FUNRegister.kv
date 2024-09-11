@@ -1,13 +1,15 @@
 #:kivy 2.3.0
 
 <FUNRegister>:
+#------------ Layout for FUNStart ----------------------------------------------------------------------------------#
     BoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 15
-    #------------ Top label ---------------------------------------------------------------------------------------------#
+    #------------ Top label --------------------------------------------------------------------------------------------#
         Label:
             text: "SUMMARY:"
+            bold: True
             size_hint: (1, 0.1)
             halign: 'left'
             valign: 'top'
@@ -15,7 +17,7 @@
             color: 1, 1, 1, 1 # White text color
             font_size: '20sp'
 
-    #------------ Race setup details -------------------------------------------------------------------------------------#
+    #------------ Race setup details -----------------------------------------------------------------------------------#
         GridLayout:
             cols: 2
             spacing: 5
@@ -154,7 +156,7 @@
                     halign: 'left'
                     font_size: '16sp'  # Reduced font size
 
-    #------------ Driver details -------------------------------------------------------------------------------------------#
+    #------------ Driver details ---------------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
             spacing: 5
@@ -248,38 +250,44 @@
                     halign: 'left'
                     font_size: '16sp'  # Adjusted font size
 
-#------------ Countdown Timer, initially invisible ------------------------------------------------------------------------------------------#
-        Label:
-            id: countdown_label
-            text: "Drive participating cars past startline!"
-            font_size: '20sp'  # Reduced font size
-            color: 1, 1, 1, 1  # White text color
-            size_hint_y: None
-            height: '50dp'
-            opacity: 0
-
-        BoxLayout:
-            orientation: 'horizontal'
+    #------------ Navigation, with Countdown Timer -----------------------------------------------------------------------#
+        FloatLayout:
             size_hint: (1, 0.2)
 
+            # Back, to FUNStart
             Button:
-                text: 'Back'
+                text: 'BACK'
+                bold: True
+                font_size: '20sp'
                 size_hint: None, None
                 size: '100dp', '50dp'
                 background_color: 0.8, 0.1, 0.1, 1
                 color: 1, 1, 1, 1
-                pos_hint: {'x': 0}
+                pos_hint: {'x': 0, 'y': 0}  # Align to the bottom left corner
                 on_press: root.go_to_funstart()
 
-            Widget:
-                size_hint_x: None
-                width: self.parent.width - 220
+            # Countdown Timer, placed in the middle
+            Label:
+                id: countdown_label
+                text: "Drive participating cars past startline!"
+                font_size: '20sp'
+                color: 1, 1, 1, 1  # White text color
+                size_hint: None, None
+                size: '300dp', '50dp'  # Adjust size as needed
+                pos_hint: {'center_x': 0.5, 'y': 0}  # Center horizontally between the buttons
+                opacity: 0  # Initially invisible
 
+            # Forward, to FUNWarmup
             Button:
-                id: start_button
+                id: start_button  # Has an id/reference because of the countdown logic
+                bold: True
+                font_size: '20sp'
                 text: 'START Registration'
                 size_hint: None, None
-                size: '130dp', '50dp'
+                size: '190dp', '50dp'
                 background_color: 0.1, 0.8, 0.1, 1
                 color: 1, 1, 1, 1
+                pos_hint: {'right': 1, 'y': 0}  # Align to the bottom right corner
                 on_press: root.start_countdown(countdown_label, self)
+
+
