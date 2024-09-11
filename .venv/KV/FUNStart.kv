@@ -125,7 +125,7 @@
             CheckBox:
                 id: auto_start_checkbox
                 size_hint: (0.1, 0.1)
-                active: root.auto_start_after_warmup  # Bind to the property
+                active: root.auto_start_after_warmup 
 
             Label:
                 text: "Automatically start after warmup?"
@@ -143,11 +143,11 @@
             size_hint: (1, 0.2)
 
             Button:
-                text: 'Back'
                 size_hint: None, None
-                size: '100dp', '50dp'
-                background_color: 0.8, 0.1, 0.1, 1
-                color: 1, 1, 1, 1
+                size: '60dp', '40dp'
+                background_normal: 'images/arrowback.png'
+                background_down: 'images/arrowback.png'
+                border: [0, 0, 0, 0]
                 pos_hint: {'x': 0}
                 on_press: root.go_to_index()
 

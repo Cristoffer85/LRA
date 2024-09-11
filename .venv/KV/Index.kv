@@ -26,16 +26,17 @@
             BoxLayout:
                 orientation: 'horizontal'
                 size_hint_y: None
-                height: '50dp'                                              # Fixed height to accommodate the labels
+                height: '50dp'
                 spacing: 10
 
+                # //////////////////////////// Solo Racing \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                 MyLabel:
                     text: 'Solo Racing'
                     bold: True
                     halign: 'center'
                     size_hint_x: 0.5
                     font_size: '24sp'                                       # Adjust font size here
-
+                # //////////////////////////// Versus Racing \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                 MyLabel:
                     text: 'Versus Racing'
                     bold: True
@@ -43,10 +44,10 @@
                     size_hint_x: 0.5
                     font_size: '24sp'                                       # Adjust font size here
 
-    ################################### Bottom row for buttons ######################################
+    ################################### Bottom row for column buttons ######################################
             BoxLayout:
                 orientation: 'horizontal'
-                size_hint_y: 1                                              # Make this layout expand to fill the remaining space
+                size_hint_y: 1
                 spacing: 10
 
                 # //////////////////////////// Left column \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -55,7 +56,8 @@
                     size_hint_x: 0.5
                     spacing: 10
                     padding: [0, 10, 10, 10]
-                    # Centering buttons horizontally
+
+                    # Free Practice
                     Button:
                         text: 'Free Practice'
                         background_color: 1, 0, 0, 1                        # Background Red
@@ -64,6 +66,7 @@
                         pos_hint: {'center_x': 0.5}
                         on_press: print("Left Button 1 Pressed")
 
+                    # Time Trial
                     Button:
                         text: 'Time Trial'
                         background_color: 1, 0, 0, 1                        # Background Red
@@ -77,7 +80,8 @@
                     orientation: 'vertical'
                     size_hint_x: 0.5
                     padding: [10, 10, 0, 10]
-                    # Centering button horizontally
+
+                    # FUN Race
                     Button:
                         text: 'FUN Race!'
                         background_color: 0, 1, 0, 1                        # Background Lime Green
