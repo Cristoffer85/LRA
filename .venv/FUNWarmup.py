@@ -16,7 +16,7 @@ class FUNWarmup(Screen):
 
     def update_countdown(self, countdown_label):
         minutes, seconds = divmod(self.countdown_time, 60)
-        countdown_label.text = f"Time Remaining: {minutes:02d}:{seconds:02d}"
+        countdown_label.text = f"{minutes:02d}:{seconds:02d}"
         if self.countdown_time <= 0:
             if self.countdown_event:
                 self.countdown_event.cancel()
@@ -31,10 +31,8 @@ class FUNWarmup(Screen):
             self.countdown_event = None
         
         fun_register_screen = self.manager.get_screen('FUNRegister')
-        countdown_label = fun_register_screen.ids.countdown_label
         start_button = fun_register_screen.ids.start_button
         
-        countdown_label.text = "Time Remaining: "
         start_button.disabled = False
         start_button.opacity = 1
 
@@ -42,7 +40,6 @@ class FUNWarmup(Screen):
         self.manager.current = 'FUNRegister'
     # Next, to FUNCountdown
     def go_to_funcountdown(self):
-
         if self.countdown_event:
             self.countdown_event.cancel()
             self.countdown_event = None

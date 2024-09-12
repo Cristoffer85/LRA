@@ -1,29 +1,41 @@
 #:kivy 2.3.0
 
 <FUNResult>:
-    BoxLayout:
-        orientation: 'vertical'
+#------------ Total Layout ---------------------------------------------------------------------------------------------#
+    FloatLayout:
         padding: 20
         spacing: 10
-
-        # Top section with Home button in the top right
-        AnchorLayout:
-            anchor_x: 'right'
-            anchor_y: 'top'
+    #------------ Top section with Results Label and Home Button -------------------------------------------------------#
+        FloatLayout:
             size_hint: (1, 0.1)
+            pos_hint: {'top': 1}
+        #------------ Results Label (Center) ---------------------------------------------------------------------------#
+            Label:
+                text: "RESULTS"
+                bold: True
+                size_hint: None, None
+                size: '200dp', '50dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center horizontally and vertically
+                color: 1, 1, 1, 1  # White text color
+                font_size: '24sp'
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
 
+        #------------ Home Button (Right) -------------------------------------------------------------------------------#
             Button:
                 size_hint: None, None
                 size: '30dp', '30dp'
                 background_normal: 'images/home.png'
                 border: [0, 0, 0, 0]
+                pos_hint: {'right': 0.95, 'center_y': 0.5}  # Right alignment with spacing and vertical centering
                 on_press: root.go_to_home()
 
-        Label:
-            text: "RESULTS"
-            size_hint: (1, 0.1)
-            halign: 'center'
-            valign: 'top'
-            text_size: self.size
-            color: 1, 1, 1, 1 # White text color
-            font_size: '24sp'
+    #------------ Race results details ----------------------------------------------------------------------------------#
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.9)
+            padding: [0, 10, 0, 0]
+
+            # Coming race result details..
+

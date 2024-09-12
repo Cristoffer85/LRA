@@ -16,8 +16,8 @@ Builder.load_file('KV/FUNStart.kv') # done
 Builder.load_file('KV/FUNRegister.kv') # done
 Builder.load_file('KV/FUNWarmup.kv') # done
 Builder.load_file('KV/FUNCountdownToStart.kv') # done
-Builder.load_file('KV/FUNLiveboard.kv') # "done" (sort of, some small spacing left) and some comments left
-Builder.load_file('KV/FUNResult.kv')
+Builder.load_file('KV/FUNLiveboard.kv') # "done" Make Restart race button that transfers back to FUNCoutdownToStart, then able to press start countdown again manually
+Builder.load_file('KV/FUNResult.kv') # done
 
 class LateraRaceTracer(App):
     def build(self):

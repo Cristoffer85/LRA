@@ -1,7 +1,7 @@
 #:kivy 2.3.0
 
 <FUNWarmup>:
-#------------ Total Layout ---------------------------------------------------------------------------------------------#
+#------------ Total Layout -----------------------------------------------------------------------------------------#
     BoxLayout:
         orientation: 'vertical'
         padding: 20
@@ -16,7 +16,6 @@
             text_size: self.size
             color: 1, 1, 1, 1 # White text color
             font_size: '24sp'
-
     #------------ Countdown ----------------------------------------------------------------------------------------#
         BoxLayout:
             orientation: 'vertical'
@@ -26,13 +25,11 @@
 
             Label:
                 id: countdown_label
-                text: "Time Remaining: "
                 font_size: '48sp'
                 color: 1, 1, 1, 1  # White text
                 size_hint: None, None
                 size: self.texture_size  
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
     #------------ Navigation ---------------------------------------------------------------------------------------#
         FloatLayout:
             size_hint: (1, 0.2)

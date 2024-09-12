@@ -1,16 +1,16 @@
 #:kivy 2.3.0
 
 <FUNLiveboard>:
+#------------ Total Layout ---------------------------------------------------------------------------------------------#
     FloatLayout:
         padding: 20
-        spacing: 10
-
-        # Top section with class selection, countdown, and home button
+        spacing: 60
+    #------------ Top section with class selection, countdown, and home button -----------------------------------------#
         FloatLayout:
             size_hint: (1, 0.1)
             pos_hint: {'top': 1}
 
-            # Class Selection Label (Left)
+        #------------ Class Selection Label (Left) ---------------------------------------------------------------------#
             Label:
                 id: class_label
                 text: "Class: Not Selected"
@@ -22,7 +22,7 @@
                 valign: 'middle'
                 halign: 'left'
 
-            # Countdown Label (Center)
+        #------------ Countdown Label (Center) -------------------------------------------------------------------------#
             Label:
                 id: countdown_label
                 text: "00:00"
@@ -34,16 +34,16 @@
                 halign: 'center'
                 text_size: self.size
 
-            # Home Button (Right)
+        #------------ Home Button (Right) ------------------------------------------------------------------------------#
             Button:
                 size_hint: None, None
                 size: '30dp', '30dp'
                 background_normal: 'images/home.png'
                 border: [0, 0, 0, 0]
-                pos_hint: {'right': 0.95, 'center_y': 0.5}  # Adjusted for right spacing and vertical centering
+                pos_hint: {'right': 0.95, 'center_y': 0.5}
                 on_press: root.go_to_home()
 
-        # Driver details section
+    #------------ Driver details section -------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
             spacing: 5
@@ -51,7 +51,7 @@
             pos_hint: {"top": 0.9}
             padding: [0, 10, 0, 0]
 
-            # Driver 1 details
+        #------------ Driver 1 details ---------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -70,7 +70,7 @@
                     valign: 'middle'
                     halign: 'left'
 
-            # Driver 2 details
+        #------------ Driver 2 details ---------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -89,7 +89,7 @@
                     valign: 'middle'
                     halign: 'left'
 
-            # Driver 3 details
+        #------------ Driver 3 details ---------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
@@ -108,7 +108,7 @@
                     valign: 'middle'
                     halign: 'left'
 
-            # Driver 4 details
+        #------------ Driver 4 details ---------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None

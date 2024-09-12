@@ -28,7 +28,11 @@ class FUNRegister(Screen):
 
     def update_countdown(self, countdown_label):
         minutes, seconds = divmod(self.countdown_time, 60)
-        countdown_label.text = f"Time Remaining: {minutes:02d}:{seconds:02d}"
+        
+        countdown_label.text = (
+        f"[color=#BBBBBB]Drive participating cars past startline![/color] "
+        f"[color=#FFFFFF][b]{minutes:02d}:{seconds:02d}[/b][/color]"
+    )
         if self.countdown_time <= 0:
             self.countdown_event.cancel()
             self.countdown_event = None
