@@ -71,6 +71,17 @@ class FUNCountdownToStart(Screen):
             Clock.schedule_once(self.play_random_start_sound, self.random_delay)
 
         self.countdown_time -= 1
+
+    def reset_manual_start(self):
+        if self.countdown_event:
+            self.countdown_event.cancel()
+            self.countdown_event = None
+
+        self.ids.next_button.opacity = 1
+
+        self.ids.countdown_label.opacity = 0
+
+        self.ids.countdown_label.text = "10"
 # ------------------------------ Start sound ------------------------------
     def play_random_start_sound(self, dt):
         self.sounds[0].play()  # Play the start sound

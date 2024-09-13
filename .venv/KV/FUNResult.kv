@@ -15,7 +15,7 @@
                 bold: True
                 size_hint: None, None
                 size: '200dp', '50dp'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center horizontally and vertically
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 color: 1, 1, 1, 1  # White text color
                 font_size: '24sp'
                 halign: 'center'
@@ -25,10 +25,10 @@
         #------------ Home Button (Right) -------------------------------------------------------------------------------#
             Button:
                 size_hint: None, None
-                size: '30dp', '30dp'
+                size: '40dp', '40dp'
                 background_normal: 'images/home.png'
                 border: [0, 0, 0, 0]
-                pos_hint: {'right': 0.95, 'center_y': 0.5}  # Right alignment with spacing and vertical centering
+                pos_hint: {'right': 0.95, 'center_y': 0.5}
                 on_press: root.go_to_home()
 
     #------------ Race results details ----------------------------------------------------------------------------------#

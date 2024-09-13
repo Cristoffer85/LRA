@@ -31,6 +31,19 @@ class FUNLiveboard(Screen):
             self.play_end_sound()
             self.transition_to_funresult()
         self.countdown_time -= 1
+
+    def reset_to_countdown(self):
+        if self.countdown_event:
+            self.countdown_event.cancel()
+            
+        self.countdown_time = self.heat_length_seconds
+
+        # Navigate back to FUNCountdownToStart
+        self.manager.transition.direction = 'right'
+        self.manager.current = 'FUNCountdownToStart'
+        
+        # Call a reset method in the FUNCountdownToStart to ensure manual start
+        self.manager.get_screen('FUNCountdownToStart').reset_manual_start()
 # ------------------------------ End sound ------------------------------
     def play_end_sound(self):
         if self.end_sound:

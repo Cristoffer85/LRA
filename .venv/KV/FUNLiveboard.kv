@@ -9,7 +9,6 @@
         FloatLayout:
             size_hint: (1, 0.1)
             pos_hint: {'top': 1}
-
         #------------ Class Selection Label (Left) ---------------------------------------------------------------------#
             Label:
                 id: class_label
@@ -34,15 +33,14 @@
                 halign: 'center'
                 text_size: self.size
 
-        #------------ Home Button (Right) ------------------------------------------------------------------------------#
+        #------------ Reset Race Button (Right) ------------------------------------------------------------------------#
             Button:
                 size_hint: None, None
-                size: '30dp', '30dp'
-                background_normal: 'images/home.png'
+                size: '40dp', '40dp'
+                background_normal: 'images/resetrace.png'
                 border: [0, 0, 0, 0]
                 pos_hint: {'right': 0.95, 'center_y': 0.5}
-                on_press: root.go_to_home()
-
+                on_press: root.reset_to_countdown()
     #------------ Driver details section -------------------------------------------------------------------------------#
         GridLayout:
             cols: 1
@@ -50,7 +48,6 @@
             size_hint: (1, 0.9)
             pos_hint: {"top": 0.9}
             padding: [0, 10, 0, 0]
-
         #------------ Driver 1 details ---------------------------------------------------------------------------------#
             BoxLayout:
                 orientation: 'vertical'
