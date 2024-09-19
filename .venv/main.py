@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.lang import Builder
-from Index import index
+from index import index
 from FUNStart import FUNStart
 from FUNRegister import FUNRegister
 from FUNWarmup import FUNWarmup
