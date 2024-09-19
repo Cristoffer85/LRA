@@ -50,7 +50,6 @@ class FUNCountdownToStart(Screen):
 
     def update_countdown(self, countdown_label):
         if self.countdown_time <= 0:
-            self.sounds[0].play()
             self.countdown_event.cancel()
             self.countdown_event = None
             self.go_to_funliveboard()
