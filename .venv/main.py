@@ -19,7 +19,7 @@ Builder.load_file('KV/FUNCountdownToStart.kv') # done
 Builder.load_file('KV/FUNLiveboard.kv') # done
 Builder.load_file('KV/FUNResult.kv') # done
 
-# Still left to do: 
+# Left to do: 
 
 # When transponder data works to be input in application, fix forms and views for how to look
 
