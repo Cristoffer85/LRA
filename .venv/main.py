@@ -1,23 +1,23 @@
 from kivy.app import App
 from kivy.lang import Builder
-from index import index
-from FUNStart import FUNStart
-from FUNRegister import FUNRegister
-from FUNWarmup import FUNWarmup
-from FUNLiveboard import FUNLiveboard
-from FUNResult import FUNResult
-from FUNCountdownToStart import FUNCountdownToStart
+from pages.Index import index
+from pages.versus.FUNStart import FUNStart 
+from pages.versus.FUNRegister import FUNRegister
+from pages.versus.FUNWarmup import FUNWarmup
+from pages.versus.FUNLiveboard import FUNLiveboard
+from pages.versus.FUNResult import FUNResult
+from pages.versus.FUNCountdownToStart import FUNCountdownToStart
 from screen_manager import MyScreenManager
 
 # Load the kv files for each screen
-Builder.load_file('KV/GLOBAL.kv') # done
-Builder.load_file('KV/index.kv') # done
-Builder.load_file('KV/FUNStart.kv') # done
-Builder.load_file('KV/FUNRegister.kv') # done
-Builder.load_file('KV/FUNWarmup.kv') # done
-Builder.load_file('KV/FUNCountdownToStart.kv') # done
-Builder.load_file('KV/FUNLiveboard.kv') # done
-Builder.load_file('KV/FUNResult.kv') # done
+Builder.load_file('design/GLOBAL.kv') # done
+Builder.load_file('design/index.kv') # done
+Builder.load_file('design/versus/FUNStart.kv') # done
+Builder.load_file('design/versus/FUNRegister.kv') # done
+Builder.load_file('design/versus/FUNWarmup.kv') # done
+Builder.load_file('design/versus/FUNCountdownToStart.kv') # done
+Builder.load_file('design/versus/FUNLiveboard.kv') # done
+Builder.load_file('design/versus/FUNResult.kv') # done
 
 # Left to do: 
 
